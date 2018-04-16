@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Global.fs" />
+    <Compile Include="antd/Button.fs" />
+    <Compile Include="antd/Dropdown.fs" />
+    <Compile Include="antd/Icon.fs" />
+    <Compile Include="antd/Grid.fs" />
+    <Compile Include="antd/Layout.fs" />
+    <Compile Include="antd/Menu.fs" />
+    <Compile Include="antd/Card.fs" />
+    <Compile Include="antd/Divider.fs" />
+    <Compile Include="Info/View.fs" />
+    <Compile Include="Counter/Types.fs" />
+    <Compile Include="Counter/State.fs" />
+    <Compile Include="Counter/View.fs" />
+    <Compile Include="Home/Types.fs" />
+    <Compile Include="Home/State.fs" />
+    <Compile Include="Home/View.fs" />
+    <Compile Include="Dashboard/Analysis/Types.fs" />
+    <Compile Include="Dashboard/Analysis/State.fs" />
+    <Compile Include="Dashboard/Analysis/View.fs" />
+    <Compile Include="Components/DemoCard.fs" />
+    <Compile Include="General/Button/_ButtonTypes.fs" />
+    <Compile Include="General/Button/_ButtonSizes.fs" />
+    <Compile Include="General/Button/_ButtonIcons.fs" />
+    <Compile Include="General/Button/_ButtonDisabled.fs" />
+    <Compile Include="General/Button/_ButtonLoading.fs" />
+    <Compile Include="General/Button/_ButtonGroup.fs" />
+    <Compile Include="General/Button/_ButtonMultiple.fs" />
+    <Compile Include="General/Button/_ButtonGhost.fs" />
+    <Compile Include="General/Button/Button.fs" />
+    <Compile Include="Layout/BasicLayout.fs" />
+    <Compile Include="Navbar/View.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="State.fs" />
+    <Compile Include="App.fs" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>
