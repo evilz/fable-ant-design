@@ -8,8 +8,8 @@ open Types
 open App.State
 open Global
 
-importAll "../node_modules/antd/dist/antd.less"
-let logo = importAll "../assets/img/fantle-design.png"
+importAll "../../node_modules/antd/dist/antd.less"
+let logo = importAll "./assets/img/fantle-design.png"
 
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
@@ -62,9 +62,8 @@ let root model dispatch =
     | General g ->
       match g with
       | Button -> General.Button.View.root model.button (ButtonMsg >> dispatch)
-      |_ -> General.Button.View.root model.button (ButtonMsg >> dispatch)
+      | GeneralComponents.Icon -> General.Icons.View.root model.icons (IconsMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
-
 
   div [] [ 
     Layout.layout [] [

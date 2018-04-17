@@ -1,4 +1,4 @@
-module General.Button
+namespace General.Button
 
 open Fable.Core
 open Fable.Core.JsInterop
@@ -124,24 +124,4 @@ module View =
                     for demo in colTwo -> model.[(demo |> getTitle)] |> renderDemo
                   ]
               ]
-             
-              // div [] [
-              //   Button.button [Disabled true] [str "Disabled"]
-              // ]
-
-              // div [] [
-              //   Button.button [Button.ButtonProps.Loading true] [str "Loading"]
-              //   Button.button [Button.primary;Button.ButtonProps.Loading true] [str "Loading"]
-              //   Button.button [Button.ButtonProps.Loading true; Button.ButtonProps.Shape Button.Circle] []
-              //   Button.button [Button.primary;Button.ButtonProps.Loading true; Button.ButtonProps.Shape Button.Circle] []
-              // ]
-
-              // div [] [
-              //   Button.group [] [
-              //     Button.button [] [str "Cancel"]
-              //     Button.button [ ] [str "Ok"]
-              //     Button.button [Button.Href "http://www.evilznet.com"; Button.Target "_blank" ] [str "Evilznet"]
-              //   ] 
-              // ]
-
             ]

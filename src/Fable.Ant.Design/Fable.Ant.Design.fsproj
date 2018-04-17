@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Button.fs" />
+    <Compile Include="Dropdown.fs" />
+    <Compile Include="Icon.fs" />
+    <Compile Include="Grid.fs" />
+    <Compile Include="Layout.fs" />
+    <Compile Include="List.fs" />
+    <Compile Include="Menu.fs" />
+    <Compile Include="Card.fs" />
+    <Compile Include="Divider.fs" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

@@ -22,7 +22,7 @@ console.log("Bundling for " + (isProduction ? "production" : "development") + ".
 
 module.exports = {
     devtool: isProduction ? undefined : "source-map",
-    entry: resolve('./src/awesome.fsproj'),
+    entry: resolve('./src/Docs/Docs.fsproj'),
     output: {
         filename: 'bundle.js',
         path: resolve('./public'),
@@ -54,8 +54,7 @@ module.exports = {
                     loader: "fable-loader",
                     options: {
                         babel: babelOptions,
-                        define: isProduction ? [] : ["DEBUG"],
-                        plugins: path.join(__dirname, "./Plugins/bin/debug/netstandard2.0/Fable.Plugins.ImportExample.dll")
+                        define: isProduction ? [] : ["DEBUG"]
                     }
                 }
             },

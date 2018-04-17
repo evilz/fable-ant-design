@@ -3,15 +3,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="../Fable.Ant.Design/Fable.Ant.Design.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Global.fs" />
-    <Compile Include="antd/Button.fs" />
-    <Compile Include="antd/Dropdown.fs" />
-    <Compile Include="antd/Icon.fs" />
-    <Compile Include="antd/Grid.fs" />
-    <Compile Include="antd/Layout.fs" />
-    <Compile Include="antd/Menu.fs" />
-    <Compile Include="antd/Card.fs" />
-    <Compile Include="antd/Divider.fs" />
     <Compile Include="Info/View.fs" />
     <Compile Include="Counter/Types.fs" />
     <Compile Include="Counter/State.fs" />
@@ -32,11 +27,13 @@
     <Compile Include="General/Button/_ButtonMultiple.fs" />
     <Compile Include="General/Button/_ButtonGhost.fs" />
     <Compile Include="General/Button/Button.fs" />
+    <Compile Include="General/Icons/_IconDemo.fs" />
+    <Compile Include="General/Icons/Icons.fs" />
     <Compile Include="Layout/BasicLayout.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

@@ -5,8 +5,8 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Props
-open Fable.AST.Fable
 
+[<RequireQualifiedAccess>]
 module Layout =
 
     type LayoutProps =

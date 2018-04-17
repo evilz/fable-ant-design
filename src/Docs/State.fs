@@ -32,6 +32,7 @@ let init result =
         home = home
         menuCollapsed = false
         button = General.Button.State.init() |> fst
+        icons = General.Icons.State.init() |> fst
       }
   model, Cmd.batch [ cmd
                      Cmd.map CounterMsg counterCmd
@@ -50,4 +51,7 @@ let update msg model =
   | ButtonMsg msg -> 
       let (button, buttonCmd) = General.Button.State.update msg model.button
       { model with button = button }, Cmd.map ButtonMsg buttonCmd
+  | IconsMsg msg -> 
+      let (icon, iconCmd) = General.Icons.State.update msg model.icons
+      { model with icons = icon }, Cmd.map IconsMsg iconCmd
 

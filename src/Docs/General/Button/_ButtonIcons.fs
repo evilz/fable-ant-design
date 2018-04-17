@@ -4,8 +4,8 @@ open Fable.AntD
 
 let view () = 
     div [] [
-      Button.button [Button.primary; Button.Shape Button.Circle; Button.ButtonProps.Icon "search" ] []
-      Button.button [Button.primary; Button.ButtonProps.Icon "search" ] [str "Search"]
+      Button.button [Button.Type Button.Primary; Button.Shape Button.Circle; Button.ButtonProps.Icon "search" ] []
+      Button.button [Button.Type Button.Primary; Button.ButtonProps.Icon "search" ] [str "Search"]
       Button.button [Button.Shape Button.Circle; Button.ButtonProps.Icon "search" ] [ ]
       Button.button [Button.ButtonProps.Icon "search" ] [str "Search"]
       br []

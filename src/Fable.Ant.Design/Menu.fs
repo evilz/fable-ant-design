@@ -1,4 +1,4 @@
-module Fable.AntD
+namespace Fable.AntD
 
 open Fable.Import
 open Fable.Core
@@ -6,6 +6,7 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Props
 
+[<RequireQualifiedAccess>]
 module Menu =
 
     [<StringEnum>]
@@ -39,14 +40,13 @@ module Menu =
         | OpenKeys of string[]
         | Selectable of bool
         | SelectedKeys of string[]
-        //| style style of the root node object	
+        //| style style of the root node object
         | SubMenuCloseDelay of float
         | SubMenuOpenDelay of float
         | Theme of MenuTheme
         | OnClick of (MenuClickArgs -> unit)
-        //| OnDeselect callback executed when a menu item is deselected, only supported for multiple mode	function({ item, key, selectedKeys })	-
-        //onOpenChange called when open/close sub menu function(openKeys: string[])	noop
-        //onSelect callback executed when a menu item is selected function({ item, key, selectedKeys })	none
+        //| OnDeselect callback executed when a menu item is deselected, only supported for multiple mode function({ item, key, selectedKeys })      //onOpenChange called when open/close sub menu function(openKeys: string[]) noop
+        //onSelect callback executed when a menu item is selected function({ item, key, selectedKeys }) none
         interface Fable.Helpers.React.Props.IProp
 
     type TitleClickArg = { key:string ; domEvent:Browser.DocumentEvent }

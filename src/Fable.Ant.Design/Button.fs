@@ -6,8 +6,6 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
-
-
 [<RequireQualifiedAccess>]
 module Button =
 
@@ -41,16 +39,8 @@ module Button =
         | Loading of bool
         interface Fable.Helpers.React.Props.IProp
 
-
-    let primary = Type Primary
-    let dashed = Type Dashed
-    let ghost = Type ButtonType.Ghost
-    let danger = Type Danger
-
     let inline button (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Button" "antd" (keyValueList CaseRules.LowerFirst props) children
 
     let inline group (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Button.Group" "antd" (keyValueList CaseRules.LowerFirst props) children
-
-   

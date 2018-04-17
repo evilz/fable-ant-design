@@ -6,6 +6,7 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Props
 
+[<RequireQualifiedAccess>]
 module Grid =
 
     [<StringEnum>]
@@ -16,7 +17,7 @@ module Grid =
 
     type RowProps =
         | Align of RowAlignement /// the vertical alignment of the flex layout
-        | Gutter of int /// spacing between grids, could be a number or a object like { xs: 8, sm: 16, md: 24}	number/object	0
+        | Gutter of int /// spacing between grids, could be a number or a object like { xs: 8, sm: 16, md: 24} number/object
         | Justify of RowJustify /// horizontal arrangement of the flex layout: start end center space-around space-between
         | Type of string /// layout mode, optional flex, browser support
         | PrefixCls of string
