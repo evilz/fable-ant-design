@@ -8,9 +8,8 @@ install:
 
 build_script:
     - cmd: yarn
-    - cmd: cd src
     - cmd: dotnet restore
-    - cmd: cd docs
+    - cmd: cd src/docs
     - cmd: dotnet fable yarn-build
 
 cache:
