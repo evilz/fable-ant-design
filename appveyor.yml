@@ -1,0 +1,17 @@
+build:
+    verbosity: detailed
+
+image: Visual Studio 2017
+
+install:
+  - ps: Install-Product node 8 x64
+
+build_script:
+    - cmd: yarn
+    - cmd: cd src
+    - cmd: dotnet restore
+    - cmd: cd docs
+    - cmd: dotnet fable yarn-build
+
+cache:
+  - "%LOCALAPPDATA%\\Yarn"
