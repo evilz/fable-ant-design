@@ -9,8 +9,11 @@ install:
 build_script:
     - yarn
     - dotnet restore
+    - echo %CD%
     - ps: cd src
+    - echo %CD%
     - ps: cd Docs
+    - echo %CD%
     - dotnet fable yarn-build
 
 cache:
