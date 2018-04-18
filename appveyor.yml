@@ -7,11 +7,11 @@ install:
   - ps: Install-Product node 8 x64
 
 build_script:
-    - cmd: yarn
-    - cmd: dotnet restore
-    - cmd: cd src
-    - cmd: cd Docs
-    - cmd: dotnet fable yarn-build
+    - ps: yarn
+    - ps: dotnet restore
+    - ps: cd src
+    - ps: cd Docs
+    - ps: dotnet fable yarn-build
 
 cache:
   - "%LOCALAPPDATA%\\Yarn"
