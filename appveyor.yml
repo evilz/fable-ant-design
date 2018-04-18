@@ -9,8 +9,8 @@ install:
 build_script:
     - cmd: yarn
     - cmd: dotnet restore
-    - cmd: .\.paket\paket.exe install
-    - cmd: cd src/docs
+    - cmd: cd src
+    - cmd: cd Docs
     - cmd: dotnet fable yarn-build
 
 cache:
