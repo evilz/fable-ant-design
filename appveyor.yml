@@ -8,6 +8,7 @@ install:
 
 build_script:
     - yarn
+    - dotnet --version
     - dotnet restore
     - cd src/Docs && dotnet fable yarn-build
 
