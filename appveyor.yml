@@ -9,7 +9,7 @@ install:
 build_script:
     - yarn
     - dotnet restore
-    - dotnet fable yarn-build src/Docs/Docs.fsproj
+    - cd src/Docs && dotnet fable yarn-build
 
 cache:
   - "%LOCALAPPDATA%\\Yarn"
