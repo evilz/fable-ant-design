@@ -7,6 +7,7 @@ type Msg =
   | HomeMsg of Home.Types.Msg
   | ButtonMsg of General.Button.Types.Msg
   | IconsMsg of General.Icons.Types.Msg
+  | GridMsg of Layout.Grid.Types.Msg
   | MenuMsg of bool
 
 type Model = {
@@ -16,4 +17,5 @@ type Model = {
     menuCollapsed: bool
     button: General.Button.Types.Model
     icons: General.Icons.Types.Model
+    grid: Layout.Grid.Types.Model
   }

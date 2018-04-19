@@ -48,6 +48,14 @@ let menuSider menuCollapsed currentPage dispatch =
                     General GeneralComponents.Button |> getMenuInfo |> menuItem
                     General GeneralComponents.Icon |> getMenuInfo |> menuItem
                   ]
+                
+                Menu.subMenu [Menu.SubMenuProps.Title (a [] [
+                                                              Icon.icon [Type "layout"] []
+                                                              span [] [str " Layout"]
+                                                            ] )] 
+                  [
+                    Layout LayoutComponents.Grid |> getMenuInfo |> menuItem
+                  ]
                  
               ] 
       ]
@@ -63,6 +71,10 @@ let root model dispatch =
       match g with
       | Button -> General.Button.View.root model.button (ButtonMsg >> dispatch)
       | GeneralComponents.Icon -> General.Icons.View.root model.icons (IconsMsg >> dispatch)
+    | Layout l ->
+      match l with
+      | LayoutComponents.Grid -> Layout.Grid.View.root model.grid (GridMsg >> dispatch)
+      | _ -> Home.View.root model.home (HomeMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 
@@ -72,7 +84,7 @@ let root model dispatch =
         [
         Layout.header [ Style [Background "white"; Padding "0"] ]
           [ Icon.icon [ ClassName "trigger";  
-                        Icon.Type "menu-unfold";   
+                        Icon.Type (if model.menuCollapsed then "menu-unfold" else "menu-fold");   
                         OnClick (fun _ -> (MenuMsg (not model.menuCollapsed) |> dispatch )); 
                         Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
                       ] [ ] 

@@ -12,6 +12,7 @@ let pageParser: Parser<Page->Page,Page> =
     map Home (s "home")
     map (General Button) (s "general" </> s "button" )
     map (General Icon) (s "general" </> s "icon")
+    map (Layout Grid) (s "layout" </> s "grid")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -33,6 +34,7 @@ let init result =
         menuCollapsed = false
         button = General.Button.State.init() |> fst
         icons = General.Icons.State.init() |> fst
+        grid = Layout.Grid.State.init() |> fst
       }
   model, Cmd.batch [ cmd
                      Cmd.map CounterMsg counterCmd
@@ -54,4 +56,7 @@ let update msg model =
   | IconsMsg msg -> 
       let (icon, iconCmd) = General.Icons.State.update msg model.icons
       { model with icons = icon }, Cmd.map IconsMsg iconCmd
+  | GridMsg msg -> 
+      let (grid, gridCmd) = Layout.Grid.State.update msg model.grid
+      { model with grid = grid }, Cmd.map GridMsg gridCmd
 

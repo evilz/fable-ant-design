@@ -87,6 +87,10 @@ let getMenuInfo page =
       match g with
       | Button -> "Button", "#general/button", "scan"
       | Icon -> "Icon", "#general/icon", "picture"
+    | Layout l -> 
+      match l with
+      | Grid -> "Grid", "#layout/grid", "appstore-o"
+      | LayoutComponents.Layout -> "Layout", "#layout/layout", "picture"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

@@ -29,6 +29,13 @@
     <Compile Include="General/Button/Button.fs" />
     <Compile Include="General/Icons/_IconDemo.fs" />
     <Compile Include="General/Icons/Icons.fs" />
+    <Compile Include="Layout/Grid/_BasicGrid.fs" />
+    <Compile Include="Layout/Grid/_GridGutter.fs" />
+    <Compile Include="Layout/Grid/_GridOffset.fs" />
+    <Compile Include="Layout/Grid/_GridSort.fs" />
+    <Compile Include="Layout/Grid/_GridFlexLayout.fs" />
+    <Compile Include="Layout/Grid/_GridFlexAlignment.fs" />
+    <Compile Include="Layout/Grid/Grid.fs" />
     <Compile Include="Layout/BasicLayout.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
