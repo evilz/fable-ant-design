@@ -35,6 +35,19 @@ module Grid =
       pull: int option;
     }
 
+    module ColSize =
+
+        let empty = { span= Some 1; order= None;offset= None; push=None;pull=None }
+        
+        let ofTuple (span,order,offset,push,pull) = 
+                        let ofInt (x:int) = if x < 0 then None else Some x
+                        { span= ofInt span; 
+                          order= ofInt order;
+                          offset= ofInt offset;
+                          push= ofInt push;
+                          pull= ofInt pull 
+                        }
+
 
     type ColProps =
       | Span of int

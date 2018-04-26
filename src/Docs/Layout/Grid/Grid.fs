@@ -12,7 +12,7 @@ module Types =
       | ChangeTabMsg of string * DemoCard.Types.Tab
 
     [<StringEnum>]
-    type Demos = Basic | Gutter | Offset | Sort | FlexLayout | FlexAlignment
+    type Demos = Basic | Gutter | Offset | Sort | FlexLayout | FlexAlignment | FlexOrder | Responsive
 
     let getTitle = function
       | Basic -> "Basic Grid" 
@@ -21,6 +21,8 @@ module Types =
       | Sort -> "Grid Sort"
       | FlexLayout -> "Flex Layout"
       | FlexAlignment -> "Flex Alignment"
+      | FlexOrder -> "Flex Order"
+      | Responsive -> "Responsive"
 
 open Types
 
@@ -60,6 +62,16 @@ module State =
             source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexAlignment.fs"; 
             activeTab = DemoCard.Types.Demo 
           }
+          { title = FlexOrder |> getTitle; 
+            demo = Layout.Grid.GridFlexOrder.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexOrder.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          { title = Responsive |> getTitle; 
+            demo = Layout.Grid.GridResponsive.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridResponsive.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
           
         |]
     
@@ -89,7 +101,7 @@ module View =
 
     let root (model:Model) (dispatch:Msg->unit) =
 
-      let demos = [ Basic; Gutter; Types.Offset; Sort; FlexLayout; FlexAlignment]
+      let demos = [ Basic; Gutter; Types.Offset; Sort; FlexLayout; FlexAlignment; Demos.FlexOrder; Responsive]
       let renderDemo = renderDemo dispatch
       div [ ClassName "grid-demo"  ] [
               yield h1 [] [str "Grid"] 

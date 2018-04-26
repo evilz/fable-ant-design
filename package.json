@@ -1,11 +1,12 @@
 {
-    "name": "awesome",
+    "name": "fable-ant-design",
     "version": "1.0.0",
     "description": "Simple Fable App",
     "scripts": {
         "postinstall": "dotnet restore",
         "build": "cd src/Docs && dotnet fable webpack -- -p",
-        "start": "webpack-dev-server",
+        "start": "cd src/Docs && dotnet fable webpack-dev-server",
+        "dev": "webpack-dev-server",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start-plugin": "chokidar './Plugins/*.fs' -c 'dotnet build ./Plugins --no-restore && cd src && dotnet fable webpack'"
     },

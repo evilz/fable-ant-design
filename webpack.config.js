@@ -25,7 +25,7 @@ module.exports = {
     entry: resolve('./src/Docs/Docs.fsproj'),
     output: {
         filename: 'bundle.js',
-        path: resolve('./public'),
+        path: resolve('./docs'),
     },
     resolve: {
         modules: [
@@ -33,7 +33,7 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: resolve('./public'),
+        contentBase: resolve('./docs'),
         port: 8080,
         hot: true,
         inline: true
