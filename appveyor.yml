@@ -8,7 +8,9 @@ install:
 
 build_script:
     - cmd: yarn
-    - cmd: yarn build
+    - cmd: cd src/Docs
+    - cmd: dotnet restore
+    - cmd: dotnet fable webpack -- -p
 
 cache:
   - "%LOCALAPPDATA%\\Yarn"
