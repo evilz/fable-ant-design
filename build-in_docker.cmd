@@ -1,0 +1,1 @@
+docker run -it -v D:/GITHUB/fable-ant-design:/data evilz/node-mono-dotnet bash

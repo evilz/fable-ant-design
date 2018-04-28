@@ -7,12 +7,11 @@
         "build": "cd src/Docs && dotnet fable webpack -- -p",
         "start": "cd src/Docs && dotnet fable webpack-dev-server",
         "dev": "webpack-dev-server",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start-plugin": "chokidar './Plugins/*.fs' -c 'dotnet build ./Plugins --no-restore && cd src && dotnet fable webpack'"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "babel-runtime": "^6.26.0",
         "react": "^15.6.2",

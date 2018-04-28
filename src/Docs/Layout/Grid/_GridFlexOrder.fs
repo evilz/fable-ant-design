@@ -7,7 +7,6 @@ let DemoBox height children = div [ Style [ Height (sprintf "%ipx" height);LineH
 
 let view () = 
     div [ ] [
-      p [ ] [ str "Align Top" ]
       Grid.row [ Grid.Type Grid.Flex ] [
         Grid.col [ Grid.Span 6; Grid.Order 4 ]  [ str "1 but order 4" ]
         Grid.col [ Grid.Span 6; Grid.Order 3  ] [ str "2 but order 3" ]

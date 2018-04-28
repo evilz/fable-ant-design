@@ -3,89 +3,31 @@ namespace Layout.Grid
 open Fable.Core
 open Fable.Core.JsInterop
 open Elmish
+open DemoCard.Types
 
 module Types =
 
-    type Model = Map<string,DemoCard.Types.Model> 
-
-    type Msg =
-      | ChangeTabMsg of string * DemoCard.Types.Tab
+    
 
     [<StringEnum>]
-    type Demos = Basic | Gutter | Offset | Sort | FlexLayout | FlexAlignment | FlexOrder | Responsive
+    type GridDemos = Basic | Gutter | Offset | Sort | FlexLayout | FlexAlignment | FlexOrder | Responsive
+    type Model = Map<GridDemos,DemoCard.Types.Tab> 
 
-    let getTitle = function
-      | Basic -> "Basic Grid" 
-      | Gutter -> "Grid Gutter"
-      | Offset -> "Column offset"
-      | Sort -> "Grid Sort"
-      | FlexLayout -> "Flex Layout"
-      | FlexAlignment -> "Flex Alignment"
-      | FlexOrder -> "Flex Order"
-      | Responsive -> "Responsive"
+    type Msg =
+      | ChangeTabMsg of GridDemos * DemoCard.Types.Tab
 
 open Types
 
 module State =
 
     let init () : Model * Cmd<Msg> =
-    
-      let demos:DemoCard.Types.Model[] =
-        [|
-          { title = Basic |> getTitle; 
-            demo = Layout.Grid.BasicGrid.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_BasicGrid.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = Gutter |> getTitle; 
-            demo = Layout.Grid.GridGutter.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridGutter.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = Offset |> getTitle; 
-            demo = Layout.Grid.GridOffset.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridOffset.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = Sort |> getTitle; 
-            demo = Layout.Grid.GridSort.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridSort.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = FlexLayout |> getTitle; 
-            demo = Layout.Grid.GridFlexLayout.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexLayout.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = FlexAlignment |> getTitle; 
-            demo = Layout.Grid.GridFlexAlignment.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexAlignment.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = FlexOrder |> getTitle; 
-            demo = Layout.Grid.GridFlexOrder.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexOrder.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          { title = Responsive |> getTitle; 
-            demo = Layout.Grid.GridResponsive.view; 
-            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridResponsive.fs"; 
-            activeTab = DemoCard.Types.Demo 
-          }
-          
-        |]
-    
-      let model = demos
-                    |> Seq.map (fun x -> x.title,x)
-                    |> Map.ofSeq
-        
-      
-      model , []
+      [Basic; Gutter; Offset; Sort; FlexLayout; FlexAlignment; FlexOrder; Responsive]
+      |> List.map (fun x->x,DemoCard.Types.Demo) 
+      |>  Map.ofList , Cmd.Empty
 
     let update msg (model:Model) : Model * Cmd<Msg> =
        match msg with
-       | ChangeTabMsg (title,tab) ->
-          model.Add(title, { model.[title] with DemoCard.Types.activeTab = tab}  ), []
+       | ChangeTabMsg (demo,tab) -> model.Add(demo, tab), []
 
 
 module View =
@@ -95,15 +37,60 @@ module View =
     
     importAll "./Grid.less" 
 
-    let renderDemo dispatch (demo:DemoCard.Types.Model)  = 
-      DemoCard.View.root demo (fun msg -> ChangeTabMsg (demo.title, msg) |> dispatch  ) 
+    let demos =
+        [|
+          Basic, { title = "Basic Grid" ; 
+            demo = Layout.Grid.BasicGrid.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_BasicGrid.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          Gutter, { title = "Grid Gutter"; 
+            demo = Layout.Grid.GridGutter.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridGutter.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          GridDemos.Offset, { title =  "Column offset"; 
+            demo = Layout.Grid.GridOffset.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridOffset.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          Sort, { title = "Grid Sort"; 
+            demo = Layout.Grid.GridSort.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridSort.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          FlexLayout, { title = "Flex Layout"; 
+            demo = Layout.Grid.GridFlexLayout.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexLayout.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          FlexAlignment, { title = "Flex Alignment"; 
+            demo = Layout.Grid.GridFlexAlignment.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexAlignment.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          GridDemos.FlexOrder, { title = "Flex Order"; 
+            demo = Layout.Grid.GridFlexOrder.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridFlexOrder.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          Responsive, { title = "Responsive"; 
+            demo = Layout.Grid.GridResponsive.view; 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_GridResponsive.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          
+        |] |> Map.ofArray
+
+    let renderDemo dispatch (demos:Map<GridDemos,DemoCardModel>) (model:Model) demo  = 
+      DemoCard.View.root {demos.[demo] with activeTab = model.[demo] }  (fun msg -> ChangeTabMsg (demo, msg) |> dispatch  ) 
           
 
     let root (model:Model) (dispatch:Msg->unit) =
 
-      let demos = [ Basic; Gutter; Types.Offset; Sort; FlexLayout; FlexAlignment; Demos.FlexOrder; Responsive]
-      let renderDemo = renderDemo dispatch
+      let renderDemo = renderDemo dispatch demos model
       div [ ClassName "grid-demo"  ] [
               yield h1 [] [str "Grid"] 
-              for demo in demos -> model.[(demo |> getTitle)] |> renderDemo
+              yield! [ Basic; Gutter; GridDemos.Offset; Sort; FlexLayout; FlexAlignment; GridDemos.FlexOrder; Responsive]
+                      |> List.map renderDemo
             ]

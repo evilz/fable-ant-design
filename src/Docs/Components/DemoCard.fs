@@ -18,7 +18,7 @@ module Types =
             | Demo -> "Demo"
             | SourceCode -> "SourceCode"
 
-    type Model = {
+    type DemoCardModel = {
         title: string
         demo: unit->React.ReactElement
         source: string
@@ -42,7 +42,7 @@ module View =
                     | _ -> Demo
         tab |> dispatch
 
-    let root (model:Model) dispatch =
+    let root (model:DemoCardModel) dispatch =
         
         let tabs = [|
             { key = "Demo"; tab = div [] [str "demo"] }
