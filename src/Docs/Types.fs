@@ -10,6 +10,7 @@ type Msg =
   | GridMsg of Layout.Grid.Types.Msg
   | LayoutMsg of Layout.Layout.Types.Msg
   | AffixMsg of Navigation.Affix.Types.Msg
+  | BreadcrumbMsg of Navigation.Breadcrumb.Types.Msg
   | MenuMsg of bool
 
 type Model = {
@@ -22,4 +23,5 @@ type Model = {
     grid: Layout.Grid.Types.Model
     layout: Layout.Layout.Types.Model
     affix: Navigation.Affix.Types.Model
+    breadcrumb: Navigation.Breadcrumb.Types.Model
   }

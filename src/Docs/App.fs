@@ -56,6 +56,7 @@ let menuSider menuCollapsed currentPage dispatch =
 
                 subMenu "logout" " Navigation" [
                     Page.Affix
+                    Page.Breadcrumb
                   ]
                  
               ] 
@@ -80,6 +81,7 @@ let root model dispatch =
     | Page.Grid -> Layout.Grid.View.root model.grid (GridMsg >> dispatch)
     | Page.Layout -> Layout.Layout.View.root model.layout (LayoutMsg >> dispatch)
     | Page.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
+    | Page.Breadcrumb -> Navigation.Breadcrumb.View.root model.breadcrumb (BreadcrumbMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 

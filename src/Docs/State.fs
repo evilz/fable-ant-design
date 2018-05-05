@@ -15,6 +15,7 @@ let pageParser: Parser<Page->Page,Page> =
     map Grid (s "layout" </> s "grid")
     map Layout (s "layout" </> s "layout")
     map Affix (s "navigation" </> s "affix")
+    map Breadcrumb (s "navigation" </> s "breadcrumb")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -39,6 +40,7 @@ let init result =
         grid = Layout.Grid.State.init() |> fst
         layout = Layout.Layout.State.init() |> fst
         affix = Navigation.Affix.State.init() |> fst
+        breadcrumb = Navigation.Breadcrumb.State.init() |> fst
       }
   model, Cmd.batch [ cmd
                      Cmd.map CounterMsg counterCmd
@@ -69,4 +71,7 @@ let update msg model =
   | AffixMsg msg -> 
       let (affix, affixCmd) = Navigation.Affix.State.update msg model.affix
       { model with affix = affix }, Cmd.map AffixMsg affixCmd
+  | BreadcrumbMsg msg -> 
+      let (breadcrumb, breadcrumbCmd) = Navigation.Breadcrumb.State.update msg model.breadcrumb
+      { model with breadcrumb = breadcrumb }, Cmd.map BreadcrumbMsg breadcrumbCmd
 

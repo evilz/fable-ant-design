@@ -76,6 +76,7 @@ let getMenuInfo page =
     | Layout -> "Layout", "#layout/layout", "layout"
     // navigation
     | Affix -> "Affix", "#navigation/affix", "appstore-o"
+    | Breadcrumb -> "Breadcrumb", "#navigation/breadcrumb", "double-right"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

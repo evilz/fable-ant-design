@@ -47,6 +47,11 @@
     <Compile Include="Navigation/Affix/_AffixContainer.fs" />
     <Compile Include="Navigation/Affix/Affix.fs" />
 
+    <Compile Include="Navigation/Breadcrumb/_BasicBreadcrumb.fs" />
+    <Compile Include="Navigation/Breadcrumb/_BreadcrumbSeparator.fs" />
+    <Compile Include="Navigation/Breadcrumb/_BreadcrumbWithIcon.fs" />
+    <Compile Include="Navigation/Breadcrumb/Breadcrumb.fs" />
+
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
