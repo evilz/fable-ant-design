@@ -43,6 +43,8 @@
     <Compile Include="Layout/Layout/Layout.fs" />
 
     <Compile Include="Navigation/Affix/_BasicAffix.fs" />
+    <Compile Include="Navigation/Affix/_AffixCallback.fs" />
+    <Compile Include="Navigation/Affix/_AffixContainer.fs" />
     <Compile Include="Navigation/Affix/Affix.fs" />
 
     <Compile Include="Navbar/View.fs" />

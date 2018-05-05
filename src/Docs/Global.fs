@@ -1,27 +1,25 @@
 module Global
 
-type GeneralComponents =
+type Page =
+  | Home
+  // general
   | Button
   | Icon
-
-type LayoutComponents = 
+  // layout
   | Grid
   | Layout
-
-type NavigationComponents = 
+  // navigation
   | Affix
   | Breadcrumb
   | Dropdown
   | Menu
   | Pagination
   | Steps
-
-type DataEntryComponents = 
+  // DataEntry
   | AutoComplete
   | Cascader
   | Checkbox
   | DatePicker
-  | Pagination
   | Form
   | Input
   | InputNumber
@@ -35,8 +33,7 @@ type DataEntryComponents =
   | TimePicker
   | Transfer
   | Upload
-
-type DataDisplayComponents = 
+  // DataDisplay
   | Avatar
   | Badge
   | Calendar
@@ -51,8 +48,7 @@ type DataDisplayComponents =
   | Tag
   | Timeline
   | Tree
-
-type FeedbackComponents = 
+    // Feedback
   | Alert
   | Modal
   | Message
@@ -60,22 +56,11 @@ type FeedbackComponents =
   | Progress
   | Popconfirm
   | Spin
-
-type OtherComponents = 
+  // Other
   | Anchor
   | BackTop
   | Divider
   | LocaleProvider
-
-type Page =
-  | Home
-  | General of GeneralComponents
-  | Layout of LayoutComponents
-  | Navigation of NavigationComponents
-  | DataEntry of DataEntryComponents
-  | DataDisplay of DataDisplayComponents
-  | Feedback of FeedbackComponents
-  | Other of OtherComponents
 
 type MenuInfo = { title:string; hash:string; icon:string}
 
@@ -83,18 +68,14 @@ let getMenuInfo page =
   let (t,h,i) =
     match page with
     | Home -> "Home", "#home", "home"
-    | General g -> 
-      match g with
-      | Button -> "Button", "#general/button", "scan"
-      | Icon -> "Icon", "#general/icon", "picture"
-    | Layout l -> 
-      match l with
-      | Grid -> "Grid", "#layout/grid", "appstore-o"
-      | LayoutComponents.Layout -> "Layout", "#layout/layout", "layout"
-    | Navigation n -> 
-      match n with
-      | Affix -> "Affix", "#navigation/affix", "appstore-o"
-      | _ -> "Home", "#home", "home"
+    // general
+    | Button -> "Button", "#general/button", "scan"
+    | Icon -> "Icon", "#general/icon", "picture"
+    // layout
+    | Grid -> "Grid", "#layout/grid", "appstore-o"
+    | Layout -> "Layout", "#layout/layout", "layout"
+    // navigation
+    | Affix -> "Affix", "#navigation/affix", "appstore-o"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

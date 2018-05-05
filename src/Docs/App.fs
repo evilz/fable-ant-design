@@ -16,10 +16,6 @@ open Fable.Helpers.React.Props
 open Fable.AntD
 open Fable.Import
 
-let subMenu icon title items = 
-  Menu.subMenu [Menu.SubMenuProps.Title (a [] [Icon.icon [Type icon] []; span [] [str title] ] )]
-               items
-
 let menuItem info =
     Menu.item [ HTMLAttr.Custom ("key", info.title) ]
               [ a [Href info.hash ] 
@@ -29,6 +25,10 @@ let menuItem info =
                   ]
                 
               ]
+
+let subMenu icon title pages = 
+  Menu.subMenu [Menu.SubMenuProps.Title (a [] [Icon.icon [Type icon] []; span [] [str title] ] )]
+               [ for p in pages -> p |> getMenuInfo |> menuItem ]
 
 
 let menuSider menuCollapsed currentPage dispatch =
@@ -45,17 +45,17 @@ let menuSider menuCollapsed currentPage dispatch =
         Menu.menu [ Menu.Theme Menu.Dark; Menu.Mode Menu.Inline; Menu.SelectedKeys [|(getMenuInfo currentPage).title |]; ]
               [ Home |> getMenuInfo |> menuItem
                 subMenu "calculator" " General" [
-                    General GeneralComponents.Button |> getMenuInfo |> menuItem
-                    General GeneralComponents.Icon |> getMenuInfo |> menuItem
+                    Page.Button
+                    Page.Icon
                   ]
 
                 subMenu "layout" " Layout" [
-                    Layout LayoutComponents.Grid |> getMenuInfo |> menuItem
-                    Layout LayoutComponents.Layout |> getMenuInfo |> menuItem
+                    Page.Grid
+                    Page.Layout
                   ]
 
                 subMenu "logout" " Navigation" [
-                    Navigation Affix |> getMenuInfo |> menuItem
+                    Page.Affix
                   ]
                  
               ] 
@@ -74,18 +74,12 @@ let root model dispatch =
 
   let pageHtml =
     function
-    | Home -> Home.View.root model.home (HomeMsg >> dispatch)
-    | General g ->
-      match g with
-      | Button -> General.Button.View.root model.button (ButtonMsg >> dispatch)
-      | GeneralComponents.Icon -> General.Icons.View.root model.icons (IconsMsg >> dispatch)
-    | Layout l ->
-      match l with
-      | LayoutComponents.Grid -> Layout.Grid.View.root model.grid (GridMsg >> dispatch)
-      | LayoutComponents.Layout -> Layout.Layout.View.root model.layout (LayoutMsg >> dispatch)
-    | Navigation n ->
-      match n with
-      | NavigationComponents.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
+    | Page.Home -> Home.View.root model.home (HomeMsg >> dispatch)
+    | Page.Button -> General.Button.View.root model.button (ButtonMsg >> dispatch)
+    | Page.Icon -> General.Icons.View.root model.icons (IconsMsg >> dispatch)
+    | Page.Grid -> Layout.Grid.View.root model.grid (GridMsg >> dispatch)
+    | Page.Layout -> Layout.Layout.View.root model.layout (LayoutMsg >> dispatch)
+    | Page.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 

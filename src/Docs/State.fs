@@ -10,11 +10,11 @@ open Types
 let pageParser: Parser<Page->Page,Page> =
   oneOf [
     map Home (s "home")
-    map (General Button) (s "general" </> s "button" )
-    map (General Icon) (s "general" </> s "icon")
-    map (Layout Grid) (s "layout" </> s "grid")
-    map (Layout LayoutComponents.Layout) (s "layout" </> s "layout")
-    map (Navigation Affix) (s "navigation" </> s "affix")
+    map Button (s "general" </> s "button" )
+    map Icon (s "general" </> s "icon")
+    map Grid (s "layout" </> s "grid")
+    map Layout (s "layout" </> s "layout")
+    map Affix (s "navigation" </> s "affix")
   ]
 
 let urlUpdate (result: Option<Page>) model =
