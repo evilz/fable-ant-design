@@ -90,7 +90,11 @@ let getMenuInfo page =
     | Layout l -> 
       match l with
       | Grid -> "Grid", "#layout/grid", "appstore-o"
-      | LayoutComponents.Layout -> "Layout", "#layout/layout", "picture"
+      | LayoutComponents.Layout -> "Layout", "#layout/layout", "layout"
+    | Navigation n -> 
+      match n with
+      | Affix -> "Affix", "#navigation/affix", "appstore-o"
+      | _ -> "Home", "#home", "home"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

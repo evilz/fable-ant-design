@@ -38,7 +38,13 @@
     <Compile Include="Layout/Grid/_GridFlexOrder.fs" />
     <Compile Include="Layout/Grid/_GridResponsive.fs" />
     <Compile Include="Layout/Grid/Grid.fs" />
-    <Compile Include="Layout/BasicLayout.fs" />
+    
+    <Compile Include="Layout/Layout/_BasicLayout.fs" />
+    <Compile Include="Layout/Layout/Layout.fs" />
+
+    <Compile Include="Navigation/Affix/_BasicAffix.fs" />
+    <Compile Include="Navigation/Affix/Affix.fs" />
+
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

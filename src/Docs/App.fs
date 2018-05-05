@@ -16,6 +16,10 @@ open Fable.Helpers.React.Props
 open Fable.AntD
 open Fable.Import
 
+let subMenu icon title items = 
+  Menu.subMenu [Menu.SubMenuProps.Title (a [] [Icon.icon [Type icon] []; span [] [str title] ] )]
+               items
+
 let menuItem info =
     Menu.item [ HTMLAttr.Custom ("key", info.title) ]
               [ a [Href info.hash ] 
@@ -40,32 +44,36 @@ let menuSider menuCollapsed currentPage dispatch =
           ]
         Menu.menu [ Menu.Theme Menu.Dark; Menu.Mode Menu.Inline; Menu.SelectedKeys [|(getMenuInfo currentPage).title |]; ]
               [ Home |> getMenuInfo |> menuItem
-                Menu.subMenu [Menu.SubMenuProps.Title (a [] [
-                                                              Icon.icon [Type "calculator"] []
-                                                              span [] [str " General"]
-                                                            ] )] 
-                  [
+                subMenu "calculator" " General" [
                     General GeneralComponents.Button |> getMenuInfo |> menuItem
                     General GeneralComponents.Icon |> getMenuInfo |> menuItem
                   ]
-                
-                Menu.subMenu [Menu.SubMenuProps.Title (a [] [
-                                                              Icon.icon [Type "layout"] []
-                                                              span [] [str " Layout"]
-                                                            ] )] 
-                  [
+
+                subMenu "layout" " Layout" [
                     Layout LayoutComponents.Grid |> getMenuInfo |> menuItem
+                    Layout LayoutComponents.Layout |> getMenuInfo |> menuItem
+                  ]
+
+                subMenu "logout" " Navigation" [
+                    Navigation Affix |> getMenuInfo |> menuItem
                   ]
                  
               ] 
       ]
 
+let header menuCollapsed dispatch = 
+  Layout.header [ Style [Background "white"; Padding "0"] ]
+          [ Icon.icon [ ClassName "trigger";  
+                        Icon.Type (if menuCollapsed then "menu-unfold" else "menu-fold");   
+                        OnClick (fun _ -> (MenuMsg (not menuCollapsed) |> dispatch )); 
+                        Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
+                      ] [ ] 
+          ]
+
 let root model dispatch =
 
   let pageHtml =
     function
-    // | Page.About -> Info.View.root
-    // | Counter -> Counter.View.root model.counter (CounterMsg >> dispatch)
     | Home -> Home.View.root model.home (HomeMsg >> dispatch)
     | General g ->
       match g with
@@ -74,21 +82,18 @@ let root model dispatch =
     | Layout l ->
       match l with
       | LayoutComponents.Grid -> Layout.Grid.View.root model.grid (GridMsg >> dispatch)
-      | _ -> Home.View.root model.home (HomeMsg >> dispatch)
+      | LayoutComponents.Layout -> Layout.Layout.View.root model.layout (LayoutMsg >> dispatch)
+    | Navigation n ->
+      match n with
+      | NavigationComponents.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 
     Layout.layout [] [
       menuSider model.menuCollapsed model.currentPage dispatch
-      Layout.layout [] 
-        [
-        Layout.header [ Style [Background "white"; Padding "0"] ]
-          [ Icon.icon [ ClassName "trigger";  
-                        Icon.Type (if model.menuCollapsed then "menu-unfold" else "menu-fold");   
-                        OnClick (fun _ -> (MenuMsg (not model.menuCollapsed) |> dispatch )); 
-                        Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
-                      ] [ ] 
-          ]
+      Layout.layout [] [
+        header model.menuCollapsed dispatch
+        
         Layout.content [ Style [ Margin "24px 16px"; Padding 24; Background "#fff"; MinHeight 700 ] ]
           [
             pageHtml model.currentPage

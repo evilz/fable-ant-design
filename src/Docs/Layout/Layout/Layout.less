@@ -1,0 +1,34 @@
+@white: #fff;
+@lightblue: #7dbcea;
+@darkblue: rgba(16, 142, 233, 1);
+@midblue: #3ba0e9;
+
+.layout-demo {
+	.ant-layout {
+		margin-bottom: 48px;
+		text-align: center;
+		.ant-layout {
+			margin-bottom: 0;
+		}
+	}
+	.ant-layout-header {
+		background: @lightblue;
+		color: @white;
+	}
+	.ant-layout-footer {
+		background: @lightblue;
+		color: @white;
+		line-height: 1.5;
+	}
+	.ant-layout-content {
+		background: @darkblue;
+		color: @white;
+		min-height: 120px;
+		line-height: 120px;
+	}
+	.ant-layout-sider {
+		background: @midblue;
+		color: @white;
+		line-height: 120px;
+	}
+}

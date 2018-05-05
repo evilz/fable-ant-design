@@ -13,6 +13,8 @@ let pageParser: Parser<Page->Page,Page> =
     map (General Button) (s "general" </> s "button" )
     map (General Icon) (s "general" </> s "icon")
     map (Layout Grid) (s "layout" </> s "grid")
+    map (Layout LayoutComponents.Layout) (s "layout" </> s "layout")
+    map (Navigation Affix) (s "navigation" </> s "affix")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -35,6 +37,8 @@ let init result =
         button = General.Button.State.init() |> fst
         icons = General.Icons.State.init() |> fst
         grid = Layout.Grid.State.init() |> fst
+        layout = Layout.Layout.State.init() |> fst
+        affix = Navigation.Affix.State.init() |> fst
       }
   model, Cmd.batch [ cmd
                      Cmd.map CounterMsg counterCmd
@@ -59,4 +63,10 @@ let update msg model =
   | GridMsg msg -> 
       let (grid, gridCmd) = Layout.Grid.State.update msg model.grid
       { model with grid = grid }, Cmd.map GridMsg gridCmd
+  | LayoutMsg msg -> 
+      let (layout, layoutCmd) = Layout.Layout.State.update msg model.layout
+      { model with layout = layout }, Cmd.map LayoutMsg layoutCmd
+  | AffixMsg msg -> 
+      let (affix, affixCmd) = Navigation.Affix.State.update msg model.affix
+      { model with affix = affix }, Cmd.map AffixMsg affixCmd
 

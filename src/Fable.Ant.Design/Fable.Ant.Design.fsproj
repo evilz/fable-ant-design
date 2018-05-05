@@ -22,6 +22,7 @@
     <Compile Include="Menu.fs" />
     <Compile Include="Card.fs" />
     <Compile Include="Divider.fs" />
+    <Compile Include="Affix.fs" />
   </ItemGroup>
 
     <!-- Add source files to "fable" folder in Nuget package -->

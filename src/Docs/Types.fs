@@ -8,6 +8,8 @@ type Msg =
   | ButtonMsg of General.Button.Types.Msg
   | IconsMsg of General.Icons.Types.Msg
   | GridMsg of Layout.Grid.Types.Msg
+  | LayoutMsg of Layout.Layout.Types.Msg
+  | AffixMsg of Navigation.Affix.Types.Msg
   | MenuMsg of bool
 
 type Model = {
@@ -18,4 +20,6 @@ type Model = {
     button: General.Button.Types.Model
     icons: General.Icons.Types.Model
     grid: Layout.Grid.Types.Model
+    layout: Layout.Layout.Types.Model
+    affix: Navigation.Affix.Types.Model
   }

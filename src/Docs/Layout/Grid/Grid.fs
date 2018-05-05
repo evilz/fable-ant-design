@@ -7,8 +7,6 @@ open DemoCard.Types
 
 module Types =
 
-    
-
     [<StringEnum>]
     type GridDemos = Basic | Gutter | Offset | Sort | FlexLayout | FlexAlignment | FlexOrder | Responsive
     type Model = Map<GridDemos,DemoCard.Types.Tab> 
