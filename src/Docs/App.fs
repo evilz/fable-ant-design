@@ -9,6 +9,7 @@ open App.State
 open Global
 
 importAll "../../node_modules/antd/dist/antd.less"
+importAll "./app.less"
 let logo = importAll "./assets/img/fantle-design.png"
 
 open Fable.Helpers.React
@@ -57,6 +58,7 @@ let menuSider menuCollapsed currentPage dispatch =
                 subMenu "logout" " Navigation" [
                     Page.Affix
                     Page.Breadcrumb
+                    Page.Dropdown
                   ]
                  
               ] 
@@ -82,6 +84,7 @@ let root model dispatch =
     | Page.Layout -> Layout.Layout.View.root model.layout (LayoutMsg >> dispatch)
     | Page.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
     | Page.Breadcrumb -> Navigation.Breadcrumb.View.root model.breadcrumb (BreadcrumbMsg >> dispatch)
+    | Page.Dropdown -> Navigation.Dropdown.View.root model.dropdown (DropdownMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 

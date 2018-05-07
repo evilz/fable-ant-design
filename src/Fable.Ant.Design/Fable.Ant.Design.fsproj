@@ -24,6 +24,7 @@
     <Compile Include="Divider.fs" />
     <Compile Include="Affix.fs" />
     <Compile Include="Breadcrumb.fs" />
+    <Compile Include="Message.fs" />
   </ItemGroup>
 
     <!-- Add source files to "fable" folder in Nuget package -->

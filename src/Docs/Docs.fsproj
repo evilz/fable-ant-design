@@ -52,6 +52,17 @@
     <Compile Include="Navigation/Breadcrumb/_BreadcrumbWithIcon.fs" />
     <Compile Include="Navigation/Breadcrumb/Breadcrumb.fs" />
 
+    <Compile Include="Navigation/Dropdown/_BasicDropdown.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownButton.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownCascading.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownClickEvent.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownContextMenu.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownHidding.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownOtherElements.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownPlacement.fs" />
+    <Compile Include="Navigation/Dropdown/_DropdownTrigger.fs" />
+    <Compile Include="Navigation/Dropdown/Dropdown.fs" />
+
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

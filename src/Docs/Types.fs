@@ -11,6 +11,7 @@ type Msg =
   | LayoutMsg of Layout.Layout.Types.Msg
   | AffixMsg of Navigation.Affix.Types.Msg
   | BreadcrumbMsg of Navigation.Breadcrumb.Types.Msg
+  | DropdownMsg of Navigation.Dropdown.Types.Msg
   | MenuMsg of bool
 
 type Model = {
@@ -24,4 +25,5 @@ type Model = {
     layout: Layout.Layout.Types.Model
     affix: Navigation.Affix.Types.Model
     breadcrumb: Navigation.Breadcrumb.Types.Model
+    dropdown: Navigation.Dropdown.Types.Model
   }

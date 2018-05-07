@@ -63,6 +63,9 @@ module Menu =
 
     let inline item (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Menu.Item" "antd" (keyValueList CaseRules.LowerFirst props) children
+
+    let inline divider (props: IProp list): React.ReactElement =
+       [] |> ofImport "Menu.Divider" "antd" (keyValueList CaseRules.LowerFirst props)
    
     let inline subMenu (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Menu.SubMenu" "antd" (keyValueList CaseRules.LowerFirst props) children

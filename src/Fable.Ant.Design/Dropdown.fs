@@ -35,3 +35,6 @@ module Dropdown =
 
     let inline dropdown  (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Dropdown" "antd" (keyValueList CaseRules.LowerFirst props) children
+
+    let inline button  (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+       ofImport "Dropdown.Button" "antd" (keyValueList CaseRules.LowerFirst props) children
