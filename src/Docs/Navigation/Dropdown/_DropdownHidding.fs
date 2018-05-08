@@ -3,9 +3,13 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.AntD
 
+let message = Message.message
 let view isVisible dispatchVisible = 
 
-    let handleMenuClick (e) = if e.key = "3" then dispatchVisible false
+    let handleMenuClick (e:Menu.MenuClickArgs) = 
+      if e.key = "3" then dispatchVisible false
+      else message.info("Click on item " + e.key)
+      // ()
   
     let handleVisibleChange  (flag) = dispatchVisible flag
 

@@ -12,7 +12,8 @@ type Msg =
   | AffixMsg of Navigation.Affix.Types.Msg
   | BreadcrumbMsg of Navigation.Breadcrumb.Types.Msg
   | DropdownMsg of Navigation.Dropdown.Types.Msg
-  | MenuMsg of bool
+  | MenuMsg of Navigation.Menu.Types.Msg
+  | SiderMsg of bool
 
 type Model = {
     currentPage: Page
@@ -26,4 +27,5 @@ type Model = {
     affix: Navigation.Affix.Types.Model
     breadcrumb: Navigation.Breadcrumb.Types.Model
     dropdown: Navigation.Dropdown.Types.Model
+    menu: Navigation.Menu.Types.Model
   }

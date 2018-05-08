@@ -3,11 +3,11 @@
     <Description>Helpers around ant design for Elmish apps</Description>
     <PackageProjectUrl>https://github.com/evilz/fable-ant-design</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/evilz/fable-ant-design/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/evilz/fable-ant-design/master/docs/img/logo-128x128.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/evilz/fable-ant-design/raw/master/src/Docs/assets/img/fantle-design.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/evilz/fable-ant-design</RepositoryUrl>
     <PackageTags>fable;elm;fsharp;ant design</PackageTags>
     <Authors>Vincent Bourdon</Authors>
-    <Version>0.0.0-beta-2</Version>
+    <Version>0.0.0-beta-3</Version>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>

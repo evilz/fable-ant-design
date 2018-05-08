@@ -63,6 +63,11 @@
     <Compile Include="Navigation/Dropdown/_DropdownTrigger.fs" />
     <Compile Include="Navigation/Dropdown/Dropdown.fs" />
 
+    <Compile Include="Navigation/Menu/_TopNavigation.fs" />
+    <Compile Include="Navigation/Menu/_InlineMenu.fs" />
+    <Compile Include="Navigation/Menu/_CollapsedInline.fs" />
+    <Compile Include="Navigation/Menu/_OpenCurrentSubmenuOnly.fs" />
+    <Compile Include="Navigation/Menu/Menu.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

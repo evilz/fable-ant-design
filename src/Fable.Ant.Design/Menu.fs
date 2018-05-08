@@ -70,4 +70,6 @@ module Menu =
     let inline subMenu (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "Menu.SubMenu" "antd" (keyValueList CaseRules.LowerFirst props) children
    
+    let inline itemGroup (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+       ofImport "Menu.ItemGroup" "antd" (keyValueList CaseRules.LowerFirst props) children
 

@@ -35,7 +35,7 @@ let subMenu icon title pages =
 let menuSider menuCollapsed currentPage dispatch =
   Layout.sider [ Layout.OnCollapse (fun args -> fun t ->
     Browser.console.log (sprintf "%A %A" args t) |> ignore
-    (MenuMsg (args) |> dispatch )); 
+    (SiderMsg (args) |> dispatch )); 
     Layout.Collapsible true; Layout.Collapsed menuCollapsed; Layout.Width 256; Layout.Breakpoint Layout.SiderBreakpoint.LG; Layout.Trigger null ] [
         div [ Style [ Height "64px"; Position "relative"; LineHeight "64px"; PaddingLeft "24px"; Transition "all .3s"; Background "#002140"; Overflow "hidden"] ] [ 
             a [Href "/#"; Style [ ]] [
@@ -59,6 +59,7 @@ let menuSider menuCollapsed currentPage dispatch =
                     Page.Affix
                     Page.Breadcrumb
                     Page.Dropdown
+                    Page.Menu
                   ]
                  
               ] 
@@ -68,7 +69,7 @@ let header menuCollapsed dispatch =
   Layout.header [ Style [Background "white"; Padding "0"] ]
           [ Icon.icon [ ClassName "trigger";  
                         Icon.Type (if menuCollapsed then "menu-unfold" else "menu-fold");   
-                        OnClick (fun _ -> (MenuMsg (not menuCollapsed) |> dispatch )); 
+                        OnClick (fun _ -> (SiderMsg (not menuCollapsed) |> dispatch )); 
                         Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
                       ] [ ] 
           ]
@@ -85,6 +86,7 @@ let root model dispatch =
     | Page.Affix -> Navigation.Affix.View.root model.affix (AffixMsg >> dispatch)
     | Page.Breadcrumb -> Navigation.Breadcrumb.View.root model.breadcrumb (BreadcrumbMsg >> dispatch)
     | Page.Dropdown -> Navigation.Dropdown.View.root model.dropdown (DropdownMsg >> dispatch)
+    | Page.Menu -> Navigation.Menu.View.root model.menu (MenuMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 
