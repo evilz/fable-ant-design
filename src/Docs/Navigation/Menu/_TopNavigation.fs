@@ -10,7 +10,7 @@ let dispatchCurrentMenu s = ()
 
 let view () = 
   
-  let handleClick (e:Menu.MenuClickArgs) =
+  let handleClick (e:Menu.ClickParam) =
     console.log("click ", e)
     dispatchCurrentMenu e.key
     

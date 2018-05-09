@@ -6,7 +6,7 @@ open Fable.AntD
 let message = Message.message
 let view isVisible dispatchVisible = 
 
-    let handleMenuClick (e:Menu.MenuClickArgs) = 
+    let handleMenuClick (e:Menu.ClickParam) = 
       if e.key = "3" then dispatchVisible false
       else message.info("Click on item " + e.key)
       // ()

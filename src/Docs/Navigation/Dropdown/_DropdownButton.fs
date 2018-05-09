@@ -9,7 +9,7 @@ let handleButtonClick (e:Fable.Import.React.MouseEvent) =
   console.log("click left button", e)
 
 
-let handleMenuClick (e:Menu.MenuClickArgs) =
+let handleMenuClick (e:Menu.ClickParam) =
   Message.message.info("Click on menu item.")
   console.log("click", e)
 

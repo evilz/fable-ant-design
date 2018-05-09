@@ -78,7 +78,7 @@ let getMenuInfo page =
     | Affix -> "Affix", "#navigation/affix", "up"
     | Breadcrumb -> "Breadcrumb", "#navigation/breadcrumb", "double-right"
     | Dropdown -> "Dropdown", "#navigation/dropdown", "down-square-o"
-    | Menu -> "Menu", "#navigation/menu", "down-square-o"
+    | Menu -> "Menu", "#navigation/menu", "menu-unfold"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

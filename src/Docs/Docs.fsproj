@@ -7,17 +7,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.fs" />
-    <Compile Include="Info/View.fs" />
-    <Compile Include="Counter/Types.fs" />
-    <Compile Include="Counter/State.fs" />
-    <Compile Include="Counter/View.fs" />
+    <Compile Include="Components/DemoCard.fs" />
     <Compile Include="Home/Types.fs" />
     <Compile Include="Home/State.fs" />
     <Compile Include="Home/View.fs" />
-    <Compile Include="Dashboard/Analysis/Types.fs" />
-    <Compile Include="Dashboard/Analysis/State.fs" />
-    <Compile Include="Dashboard/Analysis/View.fs" />
-    <Compile Include="Components/DemoCard.fs" />
     <Compile Include="General/Button/_ButtonTypes.fs" />
     <Compile Include="General/Button/_ButtonSizes.fs" />
     <Compile Include="General/Button/_ButtonIcons.fs" />
@@ -67,6 +60,8 @@
     <Compile Include="Navigation/Menu/_InlineMenu.fs" />
     <Compile Include="Navigation/Menu/_CollapsedInline.fs" />
     <Compile Include="Navigation/Menu/_OpenCurrentSubmenuOnly.fs" />
+    <Compile Include="Navigation/Menu/_VerticalMenu.fs" />
+    <Compile Include="Navigation/Menu/_MenuThemes.fs" />
     <Compile Include="Navigation/Menu/Menu.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />

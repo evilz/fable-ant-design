@@ -9,35 +9,39 @@ open DemoCard.Types
 module Types =
 
     [<StringEnum>]
-    type MenuDemos = TopNavigation | Inline | CollapsedInline | OpenCurrentSubmenuOnly
+    type MenuDemos = TopNavigation | Inline | CollapsedInline | OpenCurrentSubmenuOnly | VerticalMenu | MenuThemes
+
 
     type Model = {
       tabs: Map<MenuDemos,DemoCard.Types.Tab>
       collapsed:bool
       openKeys: string[]
+      theme: Menu.MenuTheme
     }
 
     type Msg =
       | ChangeTabMsg of MenuDemos * DemoCard.Types.Tab
       | ToggleCollapsedMsg of bool
-      | OpenChangeMsg of string
+      | OpenChangeMsg of string[]
+      | ChangeThemeMsg of bool 
 
 open Types
 
 module State =
 
     let init () : Model * Cmd<Msg> =
-      let tabs = [TopNavigation; Inline; CollapsedInline; OpenCurrentSubmenuOnly ]
+      let tabs = [TopNavigation; Inline; CollapsedInline; OpenCurrentSubmenuOnly; VerticalMenu; MenuThemes ]
                   |> List.map (fun x->x,DemoCard.Types.Demo) 
                   |>  Map.ofList 
                   
-      {tabs = tabs; collapsed = false; openKeys = [|"sub1"|] }, Cmd.Empty
+      {tabs = tabs; collapsed = false; openKeys = [|"sub1"|]; theme = Menu.Dark }, Cmd.Empty
 
     let update msg (model:Model) : Model * Cmd<Msg> =
        match msg with
        | ChangeTabMsg (demo,tab) -> {model with tabs = model.tabs.Add(demo, tab)}, []
        | ToggleCollapsedMsg (collapsed) -> {model with collapsed = collapsed }, []
-       | OpenChangeMsg key -> { model with openKeys = [|key|] }, []
+       | OpenChangeMsg keys -> { model with openKeys = keys }, []
+       | ChangeThemeMsg isDark -> { model with theme = (if isDark then Menu.Dark else Menu.Light) }, []
 
 module View =
 
@@ -49,7 +53,7 @@ module View =
 
       let demos =
         [|
-          TopNavigation, { title = "Top Navigation" ; 
+          TopNavigation, { title = "Top navigation" ; 
             demo = Navigation.Menu.TopNavigation.view; 
             source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_TopNavigation.fs"; 
             activeTab = DemoCard.Types.Demo 
@@ -64,11 +68,21 @@ module View =
             source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_CollapsedInline.fs"; 
             activeTab = DemoCard.Types.Demo 
           }
-          // OpenCurrentSubmenuOnly, { title = "Open current submenu only" ; 
-          //   demo = Navigation.Menu.OpenCurrentSubmenuOnly.view; 
-          //   source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_OpenCurrentSubmenuOnly.fs"; 
-          //   activeTab = DemoCard.Types.Demo 
-          // }
+          OpenCurrentSubmenuOnly, { title = "Open current submenu only" ; 
+            demo = Navigation.Menu.OpenCurrentSubmenuOnly.view model.openKeys (OpenChangeMsg >> dispatch); 
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_OpenCurrentSubmenuOnly.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          VerticalMenu, { title = "Vertical menu" ; 
+            demo = Navigation.Menu.VerticalMenu.view;
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_VerticalMenu.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
+          MenuThemes, { title = "Menu themes" ; 
+            demo = Navigation.Menu.MenuThemes.view model.theme  (ChangeThemeMsg >> dispatch);
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_MenuThemes.fs"; 
+            activeTab = DemoCard.Types.Demo 
+          }
         |] |> Map.ofArray
 
       let renderDemo demo  = 
@@ -76,6 +90,14 @@ module View =
      
 
       div [ ClassName "menu-demo"  ] [
-        yield h1 [] [str "Menu"] 
-        yield! [ TopNavigation; Inline; CollapsedInline; ] |> List.map renderDemo
+        h1 [] [str "Menu"] 
+        Grid.row [ Grid.Gutter 16; ] [
+          Grid.col [ ] ([ TopNavigation ] |> List.map renderDemo)
+        ]
+        Grid.row [ Grid.Gutter 16; ] [
+          Grid.col [ Grid.Span 12; Grid.Xl (12 |> U2.Case1);Grid.Lg (12 |> U2.Case1); Grid.Md (12 |> U2.Case1); Grid.Sm (24 |> U2.Case1);Grid.Xs (24 |> U2.Case1)  ]
+            ([ Inline; OpenCurrentSubmenuOnly ] |> List.map renderDemo)
+          Grid.col [ Grid.Span 12; Grid.Xl (12 |> U2.Case1);Grid.Lg (12 |> U2.Case1); Grid.Md (12 |> U2.Case1); Grid.Sm (24 |> U2.Case1);Grid.Xs (24 |> U2.Case1)  ]
+            ([ CollapsedInline;  VerticalMenu; MenuThemes ] |> List.map renderDemo)
+        ]
       ]

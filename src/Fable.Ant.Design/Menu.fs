@@ -11,42 +11,64 @@ module Menu =
 
     [<StringEnum>]
     type ButtonType =
-        | [<CompiledName("primary")>] Primary
-        | [<CompiledName("dashed")>] Dashed
-        | [<CompiledName("ghost")>] Ghost
-        | [<CompiledName("danger")>] Danger
+        | Primary
+        | Dashed
+        | Ghost
+        | Danger
 
     [<StringEnum>]
     type MenuMode = 
-        | [<CompiledName("vertical")>] Vertical 
-        | [<CompiledName("vertical-right ")>] VerticalRight 
-        | [<CompiledName("horizontal")>] Horizontal 
-        | [<CompiledName("inline")>] Inline
+        | Vertical 
+        | [<CompiledName("vertical-left")>] VerticalLeft 
+        | [<CompiledName("vertical-right")>] VerticalRight 
+        | Horizontal 
+        | Inline
 
     [<StringEnum>]
     type MenuTheme = 
-        | [<CompiledName("light")>] Light 
-        | [<CompiledName("dark")>] Dark
+        | Light 
+        | Dark
 
-    type MenuClickArgs = { item:React.ReactElement; key:string; keyPath:string }
+    type SelectParam = {
+        key: string
+        keyPath: string[]
+        item: React.ReactElement // any ?
+        domEvent: Browser.DocumentEvent // any ?
+        selectedKeys: string[]
+    }
+
+    type ClickParam  = { 
+        key:string
+        keyPath:string
+        item:React.ReactElement // any ?
+        domEvent: Browser.DocumentEvent // any ?
+    }
+
+
     type MenuProps =
-        | DefaultOpenKeys of string[]
-        | DefaultSelectedKeys of string[]
-        | ForceSubMenuRender of bool
-        | InlineCollapsed of bool
-        | InlineIndent of int
+        | Id of string
+        | Theme of MenuTheme
         | Mode of MenuMode 
-        | Multiple of bool
-        | OpenKeys of string[]
         | Selectable of bool
         | SelectedKeys of string[]
-        //| style style of the root node object
+        | DefaultSelectedKeys of string[]
+        | OpenKeys of string[]
+        | DefaultOpenKeys of string[]
+        | OnOpenChange of (string[] -> unit)
+        | OnSelect of (SelectParam -> unit)
+        | OnDeselect of (SelectParam -> unit)
+        | OnClick of (ClickParam -> unit)
+        | Style of React.CSSProperties
+        | OpenAnimation of U2<string,obj>
+        | OpenTransitionName of U2<string,obj>
+        | ClassName of string
+        | PrefixCls of string
+        | Multiple of bool
+        | InlineIndent of int
+        | InlineCollapsed of bool
         | SubMenuCloseDelay of float
         | SubMenuOpenDelay of float
-        | Theme of MenuTheme
-        | OnClick of (MenuClickArgs -> unit)
-        //| OnDeselect callback executed when a menu item is deselected, only supported for multiple mode function({ item, key, selectedKeys })      //onOpenChange called when open/close sub menu function(openKeys: string[]) noop
-        //onSelect callback executed when a menu item is selected function({ item, key, selectedKeys }) none
+        | GetPopupContainer of (Browser.Element -> Browser.HTMLElement)
         interface Fable.Helpers.React.Props.IProp
 
     type TitleClickArg = { key:string ; domEvent:Browser.DocumentEvent }

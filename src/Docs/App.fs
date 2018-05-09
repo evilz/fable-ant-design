@@ -71,8 +71,9 @@ let header menuCollapsed dispatch =
                         Icon.Type (if menuCollapsed then "menu-unfold" else "menu-fold");   
                         OnClick (fun _ -> (SiderMsg (not menuCollapsed) |> dispatch )); 
                         Style [ FontSize "18px"; LineHeight "64px"; Padding "0 24px"; Cursor "pointer"; Transition "color .3s";]
-                      ] [ ] 
+                      ] [ ]
           ]
+
 
 let root model dispatch =
 
@@ -100,7 +101,7 @@ let root model dispatch =
             pageHtml model.currentPage
             
           ]
-        Layout.footer [] [str "footer"]
+        Layout.footer [] [str ""]
        ]
     ]
   ]

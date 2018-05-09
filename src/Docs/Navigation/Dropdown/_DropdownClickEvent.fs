@@ -4,7 +4,7 @@ open Fable.Helpers.React.Props
 open Fable.AntD
 
 let message = Message.message
-let onClick = (fun (x:Menu.MenuClickArgs) -> message.info("Click on item " + x.key))
+let onClick = (fun (x:Menu.ClickParam) -> message.info("Click on item " + x.key))
 
 let menu = 
   Menu.menu [Menu.OnClick onClick] [

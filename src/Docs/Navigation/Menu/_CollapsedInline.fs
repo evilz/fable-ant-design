@@ -4,12 +4,9 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.AntD
 
-// let toggleCollapsed _ =
-//   console.log "toggleCollapsed"
-
 let view collapsed toggleCollapsed   () = 
   
-  let handleClick (e:Menu.MenuClickArgs) =
+  let handleClick (e:Menu.ClickParam) =
     console.log("click ", e)
     
   div [Style [Width 256];] [
