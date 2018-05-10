@@ -63,6 +63,17 @@
     <Compile Include="Navigation/Menu/_VerticalMenu.fs" />
     <Compile Include="Navigation/Menu/_MenuThemes.fs" />
     <Compile Include="Navigation/Menu/Menu.fs" />
+
+    <Compile Include="Navigation/Pagination/_PaginationBasic.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationMore.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationChanger.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationJumper.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationMiniSize.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationSimpleMode.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationControlled.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationTotalNumber.fs" />
+    <Compile Include="Navigation/Pagination/_PaginationPrevNext.fs" />
+    <Compile Include="Navigation/Pagination/Pagination.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

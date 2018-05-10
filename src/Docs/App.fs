@@ -60,6 +60,7 @@ let menuSider menuCollapsed currentPage dispatch =
                     Page.Breadcrumb
                     Page.Dropdown
                     Page.Menu
+                    Page.Pagination
                   ]
                  
               ] 
@@ -88,6 +89,7 @@ let root model dispatch =
     | Page.Breadcrumb -> Navigation.Breadcrumb.View.root model.breadcrumb (BreadcrumbMsg >> dispatch)
     | Page.Dropdown -> Navigation.Dropdown.View.root model.dropdown (DropdownMsg >> dispatch)
     | Page.Menu -> Navigation.Menu.View.root model.menu (MenuMsg >> dispatch)
+    | Page.Pagination -> Navigation.Pagination.View.root model.pagination (PaginationMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 

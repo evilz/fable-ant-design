@@ -18,6 +18,7 @@ let pageParser: Parser<Page->Page,Page> =
     map Breadcrumb (s "navigation" </> s "breadcrumb")
     map Dropdown (s "navigation" </> s "dropdown")
     map Menu (s "navigation" </> s "menu")
+    map Pagination (s "navigation" </> s "pagination")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -43,6 +44,7 @@ let init result =
         breadcrumb = Navigation.Breadcrumb.State.init() |> fst
         dropdown = Navigation.Dropdown.State.init() |> fst
         menu = Navigation.Menu.State.init() |> fst
+        pagination = Navigation.Pagination.State.init() |> fst
       }
   model, cmd
 
@@ -77,5 +79,8 @@ let update msg model =
   | MenuMsg msg -> 
       let (menu, menuCmd) = Navigation.Menu.State.update msg model.menu
       { model with menu = menu }, Cmd.map MenuMsg menuCmd
+  | PaginationMsg msg -> 
+      let (pagination, paginationCmd) = Navigation.Pagination.State.update msg model.pagination
+      { model with pagination = pagination }, Cmd.map PaginationMsg paginationCmd
 
 

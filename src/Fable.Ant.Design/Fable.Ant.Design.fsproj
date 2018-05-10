@@ -27,6 +27,7 @@
     <Compile Include="Message.fs" />
     <Compile Include="Switch.fs" />
     <Compile Include="Tabs.fs" />
+    <Compile Include="Pagination.fs" />
   </ItemGroup>
 
     <!-- Add source files to "fable" folder in Nuget package -->

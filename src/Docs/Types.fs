@@ -12,6 +12,7 @@ type Msg =
   | BreadcrumbMsg of Navigation.Breadcrumb.Types.Msg
   | DropdownMsg of Navigation.Dropdown.Types.Msg
   | MenuMsg of Navigation.Menu.Types.Msg
+  | PaginationMsg of Navigation.Pagination.Types.Msg
   | SiderMsg of bool
 
 type Model = {
@@ -26,4 +27,5 @@ type Model = {
     breadcrumb: Navigation.Breadcrumb.Types.Model
     dropdown: Navigation.Dropdown.Types.Model
     menu: Navigation.Menu.Types.Model
+    pagination: Navigation.Pagination.Types.Model
   }
