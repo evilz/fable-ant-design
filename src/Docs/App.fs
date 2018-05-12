@@ -61,6 +61,7 @@ let menuSider menuCollapsed currentPage dispatch =
                     Page.Dropdown
                     Page.Menu
                     Page.Pagination
+                    Page.Steps
                   ]
                  
               ] 
@@ -90,6 +91,7 @@ let root model dispatch =
     | Page.Dropdown -> Navigation.Dropdown.View.root model.dropdown (DropdownMsg >> dispatch)
     | Page.Menu -> Navigation.Menu.View.root model.menu (MenuMsg >> dispatch)
     | Page.Pagination -> Navigation.Pagination.View.root model.pagination (PaginationMsg >> dispatch)
+    | Page.Steps -> Navigation.Steps.View.root model.steps (StepsMsg >> dispatch)
     | _ -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div [] [ 

@@ -13,6 +13,7 @@ type Msg =
   | DropdownMsg of Navigation.Dropdown.Types.Msg
   | MenuMsg of Navigation.Menu.Types.Msg
   | PaginationMsg of Navigation.Pagination.Types.Msg
+  | StepsMsg of Navigation.Steps.Types.Msg
   | SiderMsg of bool
 
 type Model = {
@@ -28,4 +29,5 @@ type Model = {
     dropdown: Navigation.Dropdown.Types.Model
     menu: Navigation.Menu.Types.Model
     pagination: Navigation.Pagination.Types.Model
+    steps: Navigation.Steps.Types.Model
   }

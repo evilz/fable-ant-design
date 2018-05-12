@@ -28,6 +28,8 @@
     <Compile Include="Switch.fs" />
     <Compile Include="Tabs.fs" />
     <Compile Include="Pagination.fs" />
+    <Compile Include="Steps.fs" />
+    <Compile Include="Popover.fs" />
   </ItemGroup>
 
     <!-- Add source files to "fable" folder in Nuget package -->

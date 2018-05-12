@@ -79,7 +79,8 @@ let getMenuInfo page =
     | Breadcrumb -> "Breadcrumb", "#navigation/breadcrumb", "double-right"
     | Dropdown -> "Dropdown", "#navigation/dropdown", "down-square-o"
     | Menu -> "Menu", "#navigation/menu", "menu-unfold"
-    | Pagination -> "Pagination", "#navigation/pagination", "menu-unfold"
+    | Pagination -> "Pagination", "#navigation/pagination", "right-square"
+    | Steps -> "Steps", "#navigation/steps", "check-circle"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}

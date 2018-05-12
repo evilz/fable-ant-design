@@ -74,6 +74,17 @@
     <Compile Include="Navigation/Pagination/_PaginationTotalNumber.fs" />
     <Compile Include="Navigation/Pagination/_PaginationPrevNext.fs" />
     <Compile Include="Navigation/Pagination/Pagination.fs" />
+
+    <Compile Include="Navigation/Steps/_StepsBasic.fs" />
+    <Compile Include="Navigation/Steps/_StepsMiniVersion.fs" />
+    <Compile Include="Navigation/Steps/_StepsWithIcon.fs" />
+    <Compile Include="Navigation/Steps/_StepsSwitchStep.fs" />
+    <Compile Include="Navigation/Steps/_StepsVertical.fs" />
+    <Compile Include="Navigation/Steps/_StepsVerticalMini.fs" />
+    <Compile Include="Navigation/Steps/_StepsErrorStatus.fs" />
+    <Compile Include="Navigation/Steps/_StepsDotStyle.fs" />
+    <Compile Include="Navigation/Steps/_StepsCustomizedDotStyle.fs" />
+    <Compile Include="Navigation/Steps/Steps.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

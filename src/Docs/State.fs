@@ -19,6 +19,7 @@ let pageParser: Parser<Page->Page,Page> =
     map Dropdown (s "navigation" </> s "dropdown")
     map Menu (s "navigation" </> s "menu")
     map Pagination (s "navigation" </> s "pagination")
+    map Steps (s "navigation" </> s "steps")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -45,6 +46,7 @@ let init result =
         dropdown = Navigation.Dropdown.State.init() |> fst
         menu = Navigation.Menu.State.init() |> fst
         pagination = Navigation.Pagination.State.init() |> fst
+        steps = Navigation.Steps.State.init() |> fst
       }
   model, cmd
 
@@ -82,5 +84,8 @@ let update msg model =
   | PaginationMsg msg -> 
       let (pagination, paginationCmd) = Navigation.Pagination.State.update msg model.pagination
       { model with pagination = pagination }, Cmd.map PaginationMsg paginationCmd
+  | StepsMsg msg -> 
+      let (steps, stepsCmd) = Navigation.Steps.State.update msg model.steps
+      { model with steps = steps }, Cmd.map StepsMsg stepsCmd
 
 
