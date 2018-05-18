@@ -63,6 +63,15 @@ let menuSider menuCollapsed currentPage dispatch =
                     Page.Pagination
                     Page.Steps
                   ]
+
+                subMenu "edit" " Data Entry" [
+                    Page.AutoComplete
+                    Page.Cascader
+                    Page.Checkbox
+                    Page.DatePicker
+                    Page.Form
+                    Page.Input
+                  ]
                  
               ] 
       ]
@@ -92,7 +101,8 @@ let root model dispatch =
     | Page.Menu -> Navigation.Menu.View.root model.menu (MenuMsg >> dispatch)
     | Page.Pagination -> Navigation.Pagination.View.root model.pagination (PaginationMsg >> dispatch)
     | Page.Steps -> Navigation.Steps.View.root model.steps (StepsMsg >> dispatch)
-    | _ -> Home.View.root model.home (HomeMsg >> dispatch)
+    | Page.AutoComplete -> DataEntry.AutoComplete.View.root model.autoComplete (AutoCompleteMsg >> dispatch)
+    | _ -> div [] [ str "404 !!!"]
 
   div [] [ 
     Layout.layout [] [

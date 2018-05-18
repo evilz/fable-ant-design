@@ -30,6 +30,8 @@
     <Compile Include="Pagination.fs" />
     <Compile Include="Steps.fs" />
     <Compile Include="Popover.fs" />
+    <Compile Include="AutoComplete.fs" />
+    <Compile Include="Input.fs" />
   </ItemGroup>
 
     <!-- Add source files to "fable" folder in Nuget package -->

@@ -20,6 +20,10 @@ let pageParser: Parser<Page->Page,Page> =
     map Menu (s "navigation" </> s "menu")
     map Pagination (s "navigation" </> s "pagination")
     map Steps (s "navigation" </> s "steps")
+
+    map AutoComplete (s "dataentry" </> s "autocomplete")
+
+
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -47,6 +51,8 @@ let init result =
         menu = Navigation.Menu.State.init() |> fst
         pagination = Navigation.Pagination.State.init() |> fst
         steps = Navigation.Steps.State.init() |> fst
+
+        autoComplete = DataEntry.AutoComplete.State.init() |> fst
       }
   model, cmd
 
@@ -87,5 +93,8 @@ let update msg model =
   | StepsMsg msg -> 
       let (steps, stepsCmd) = Navigation.Steps.State.update msg model.steps
       { model with steps = steps }, Cmd.map StepsMsg stepsCmd
+  | AutoCompleteMsg msg -> 
+      let (autoComplete, autoCompleteCmd) = DataEntry.AutoComplete.State.update msg model.autoComplete
+      { model with autoComplete = autoComplete }, Cmd.map AutoCompleteMsg autoCompleteCmd
 
 
