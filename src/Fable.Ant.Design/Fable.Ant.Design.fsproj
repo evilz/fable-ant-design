@@ -13,6 +13,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Alert.fs" />
+    <Compile Include="Anchor.fs" />
+    <Compile Include="Avatar.fs" />
+    <Compile Include="BackTop.fs" />
+    <Compile Include="Badge.fs" />
     <Compile Include="Button.fs" />
     <Compile Include="Dropdown.fs" />
     <Compile Include="Icon.fs" />
@@ -29,6 +34,7 @@
     <Compile Include="Tabs.fs" />
     <Compile Include="Pagination.fs" />
     <Compile Include="Steps.fs" />
+    <Compile Include="Table.fs" />
     <Compile Include="Popover.fs" />
     <Compile Include="AutoComplete.fs" />
     <Compile Include="Input.fs" />

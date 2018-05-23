@@ -59,8 +59,14 @@ module AutoComplete =
         | DropdownStyle of React.CSSProperties
         | DropdownMenuStyle of React.CSSProperties
         | OnSearch of (string -> unit)
-        | FilterOption of U2<bool, (string -> React.Component<OptionProps,obj> -> unit)>
+        | FilterOption of U2<bool, (string -> React.Component<OptionProps,obj> -> bool)>
         interface Fable.Helpers.React.Props.IProp
 
     let inline autoComplete (props: IProp list) (children: React.ReactElement list): React.ReactElement =
        ofImport "AutoComplete" "antd" (keyValueList CaseRules.LowerFirst props) children
+
+    let inline option  (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+       ofImport "AutoComplete.Option " "antd" (keyValueList CaseRules.LowerFirst props) children
+
+    let inline optGroup  (props: IProp list) (children: React.ReactElement list): React.ReactElement =
+       ofImport "AutoComplete.OptGroup " "antd" (keyValueList CaseRules.LowerFirst props) children

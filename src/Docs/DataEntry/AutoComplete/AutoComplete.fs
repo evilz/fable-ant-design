@@ -43,7 +43,7 @@ module State =
 
     let init () : Model * Cmd<Msg> =
       
-      let tabs = [ Basic; Customized; CustomizeInputComponent; NonCaseSensitive]  
+      let tabs = [ Basic; Customized; CustomizeInputComponent; NonCaseSensitive; LookupPatternsCertainCategory]  
                     |> List.map (fun x->x,DemoCard.Types.Demo) 
                     |>  Map.ofList
       { tabs = tabs; basicDataSource = [||]; customizedDataSource = [||]; customizeInputComponentDataSource = [||]; NonCaseSensitiveDataSource = [||] }, Cmd.Empty
@@ -85,8 +85,14 @@ module View =
             }
            NonCaseSensitive, { 
             title = "Non-case-sensitive AutoComplete" ; 
-            demo = DataEntry.AutoComplete.AutoCompleteNonCaseSensitive.view model.basicDataSource (SearchBasicMsg >> dispatch);
+            demo = DataEntry.AutoComplete.AutoCompleteNonCaseSensitive.view;
             source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteNonCaseSensitive.fs"; 
+            activeTab = DemoCard.Types.Demo
+            }
+           LookupPatternsCertainCategory, { 
+            title = "Lookup-Patterns - Certain Category" ; 
+            demo = DataEntry.AutoComplete.AutoCompleteLookupPatternsCertainCategory.view;
+            source = importAll "!!highlight-loader?raw=true&lang=fsharp!./_AutoCompleteLookupPatternsCertainCategory.fs"; 
             activeTab = DemoCard.Types.Demo
             }
           
@@ -97,5 +103,5 @@ module View =
 
       div [ ] [
         yield h1 [] [str "AutoComplete"] 
-        yield! ([ Basic; Customized; CustomizeInputComponent; NonCaseSensitive ] |> List.map renderDemo)
+        yield! ([ Basic; Customized; CustomizeInputComponent; NonCaseSensitive; LookupPatternsCertainCategory ] |> List.map renderDemo)
         ]
