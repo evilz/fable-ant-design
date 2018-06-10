@@ -78,34 +78,48 @@ module Table =
 
     type SelectionSelectFn<'T> = 'T -> bool -> obj[] -> Browser.Event -> obj
 
-// export interface TablePaginationConfig extends PaginationProps {
-//   position?: 'top' | 'bottom' | 'both';
-//}
+    [<StringEnum>]
+    type TablePaginationPosition = Top | Bottom | Both
+    type TablePaginationConfig = { //extends PaginationProps {
+        position: TablePaginationPosition option
+    }
 
-export type TableSelectWay = 'onSelect' | 'onSelectAll' | 'onSelectInvert';
+    [<StringEnum>]
+    type TableSelectWay = OnSelect | OnSelectAll | OnSelectInvert
 
-export interface TableRowSelection<T> {
-  type?: RowSelectionType;
-  selectedRowKeys?: string[] | number[];
-  onChange?: (selectedRowKeys: string[] | number[], selectedRows: Object[]) => any;
-  getCheckboxProps?: (record: T) => Object;
-  onSelect?: SelectionSelectFn<T>;
-  onSelectAll?: (selected: boolean, selectedRows: Object[], changeRows: Object[]) => any;
-  onSelectInvert?: (selectedRows: Object[]) => any;
-  selections?: SelectionItem[] | boolean;
-  hideDefaultSelections?: boolean;
-  fixed?: boolean;
-  columnWidth?: string | number;
-}
+    
+    type SelectionItemSelectFn = string[] -> obj
 
-export interface TableProps<T> {
-  prefixCls?: string;
-  dropdownPrefixCls?: string;
-  rowSelection?: TableRowSelection<T>;
-  pagination?: TablePaginationConfig | false;
-  size?: 'default' | 'middle' | 'small';
-  dataSource?: T[];
-  components?: TableComponents;
+    [<Pojo>]
+    type SelectionItem = {
+          key: string;
+          text: React.ReactNode;
+          onSelect: SelectionItemSelectFn;
+    }
+
+    type TableRowSelection<'T> =
+        | Type of RowSelectionType
+        | SelectedRowKeys of  U2<string[],int[]>
+        | OnChange of (U2<string[],int[]> -> obj[] -> obj)
+        | GetCheckboxProps of ('T -> obj)
+        | OnSelect of SelectionSelectFn<'T>
+        | OnSelectAll of (bool -> obj[] -> obj[] -> obj)
+        | OnSelectInvert of (obj[] -> obj)
+        | Selections of U2<SelectionItem[],bool>
+        | HideDefaultSelections of bool
+        | Fixed of bool
+        | ColumnWidth of U2<string,int>
+
+    [<StringEnum>]
+    type TableSize = Default | Middle | Small
+    type TableProps<'T> =
+        | PrefixCls of string
+        | DropdownPrefixCls of string
+        | RowSelection of TableRowSelection<'T>
+        | Pagination of U2<TablePaginationConfig,bool> //false;
+        | Size of TableSize
+        | DataSource of 'T[]
+        | Components of TableComponents
   columns?: ColumnProps<T>[];
   rowKey?: string | ((record: T, index: number) => string);
   rowClassName?: (record: T, index: number) => string;
@@ -149,13 +163,6 @@ export interface TableState<T> {
   sortOrder: 'ascend' | 'descend' | undefined;
 }
 
-export type SelectionItemSelectFn = (key: string[]) => any;
-
-export interface SelectionItem {
-  key: string;
-  text: React.ReactNode;
-  onSelect: SelectionItemSelectFn;
-}
 
 export interface SelectionCheckboxAllProps<T> {
   store: Store;
