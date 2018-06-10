@@ -29,6 +29,9 @@
     <Compile Include="Table.fs" />
     <Compile Include="Popover.fs" />
     <Compile Include="Input.fs" />
+
+    <Compile Include="InputNumber.fs" />
+
     <Content Include="*.fsproj; **/*.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
