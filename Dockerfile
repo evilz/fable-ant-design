@@ -1,4 +1,4 @@
-FROM fable-build-test
+FROM evilz/node-mono-dotnet
 
 WORKDIR /app
 COPY . .
