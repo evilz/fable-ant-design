@@ -13,6 +13,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common.fs" />
+    <Compile Include="Affix.fs" />
+    <Compile Include="Alert.fs" />
+    <Compile Include="Anchor.fs" />
+    <Compile Include="AutoComplete.fs" />
+    <Compile Include="Avatar.fs" />
+    <Compile Include="BackTop.fs" />
+    <Compile Include="Badge.fs" />
+    <Compile Include="Breadcrumb.fs" />
     <Compile Include="Button.fs" />
     <Compile Include="Dropdown.fs" />
     <Compile Include="Icon.fs" />
@@ -30,9 +39,13 @@
     <Compile Include="Pagination.fs" />
     <Compile Include="Steps.fs" />
     <Compile Include="Popover.fs" />
+    <Compile Include="Input.fs" />
+    <Compile Include="InputNumber.fs" />
+    <Compile Include="Select.fs" />
+    <Compile Include="Form.fs" />
   </ItemGroup>
 
-    <!-- Add source files to "fable" folder in Nuget package -->
+  <!-- Add source files to "fable" folder in Nuget package -->
   <ItemGroup>
     <Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
   </ItemGroup>
