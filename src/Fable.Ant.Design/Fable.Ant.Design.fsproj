@@ -15,6 +15,7 @@
     <Compile Include="Calendar.fs" />
     <Compile Include="Card.fs" />
     <Compile Include="Carousel.fs" />
+    <Compile Include="Cascader.fs" />
     <Compile Include="Dropdown.fs" />
     <Compile Include="Icon.fs" />
     <Compile Include="Grid.fs" />

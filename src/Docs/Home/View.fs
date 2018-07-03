@@ -78,6 +78,15 @@ let root model dispatch =
              a [Href "#"; Style [Width "42px"; Height "42px"; BorderRadius "4px"; Background "#eee"; Display "inline-block"] ] [] 
            ]
           ]
+
+          div [] [
+             Carousel.carousel [] [
+               div [Style [TextAlign "center"; Height 160; LineHeight "160px"; Background "#364d79"; Overflow "hidden"] ] [h3 [] [str "1"]]
+               div [] [h3 [] [str "2"]]
+               div [] [h3 [] [str "3"]]
+               div [] [h3 [] [str "4"]]
+             ]
+          ]
       ]
     ]
   ]

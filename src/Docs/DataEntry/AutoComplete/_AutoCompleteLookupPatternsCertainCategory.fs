@@ -1,4 +1,5 @@
 module DataEntry.AutoComplete.AutoCompleteLookupPatternsCertainCategory
+
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Import.Browser
