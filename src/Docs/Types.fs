@@ -14,6 +14,7 @@ type Msg =
   | MenuMsg of Navigation.Menu.Types.Msg
   | PaginationMsg of Navigation.Pagination.Types.Msg
   | StepsMsg of Navigation.Steps.Types.Msg
+  | AutoCompleteMsg of DataEntry.AutoComplete.Types.Msg
   | SiderMsg of bool
 
 type Model = {
@@ -30,4 +31,6 @@ type Model = {
     menu: Navigation.Menu.Types.Model
     pagination: Navigation.Pagination.Types.Model
     steps: Navigation.Steps.Types.Model
+
+    autoComplete: DataEntry.AutoComplete.Types.Model
   }

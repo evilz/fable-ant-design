@@ -85,6 +85,13 @@
     <Compile Include="Navigation/Steps/_StepsDotStyle.fs" />
     <Compile Include="Navigation/Steps/_StepsCustomizedDotStyle.fs" />
     <Compile Include="Navigation/Steps/Steps.fs" />
+
+    <Compile Include="DataEntry/AutoComplete/_AutoCompleteBasic.fs" />
+    <Compile Include="DataEntry/AutoComplete/_AutoCompleteCustomized.fs" />
+    <Compile Include="DataEntry/AutoComplete/_AutoCompleteCustomizeInputComponent.fs" />
+    <Compile Include="DataEntry/AutoComplete/_AutoCompleteNonCaseSensitive.fs" />
+    <Compile Include="DataEntry/AutoComplete/_AutoCompleteLookupPatternsCertainCategory.fs" />
+    <Compile Include="DataEntry/AutoComplete/AutoComplete.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />

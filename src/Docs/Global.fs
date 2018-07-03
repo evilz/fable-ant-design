@@ -81,6 +81,12 @@ let getMenuInfo page =
     | Menu -> "Menu", "#navigation/menu", "menu-unfold"
     | Pagination -> "Pagination", "#navigation/pagination", "right-square"
     | Steps -> "Steps", "#navigation/steps", "check-circle"
+    | AutoComplete -> "AutoComplete", "#dataentry/autocomplete", "check-circle"
+    | Cascader -> "Cascader", "#dataentry/cascader", "check-circle"
+    | Checkbox -> "Checkbox", "#dataentry/checkbox", "check-circle"
+    | DatePicker -> "DatePicker", "#dataentry/datePicker", "check-circle"
+    | Form -> "Form", "#dataentry/form", "check-circle"
+    | Input -> "Input", "#dataentry/input", "check-circle"
     | _ -> "Home", "#home", "home"
 
   { title=t; hash=h; icon=i}
