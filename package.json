@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "Simple Fable App",
     "scripts": {
-        "postinstall": "dotnet restore",
         "build": "cd src/Docs && dotnet fable webpack -- -p",
         "start": "cd src/Docs && dotnet fable webpack-dev-server",
         "dev": "webpack-dev-server",

@@ -6,24 +6,39 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
-/// https://ant.design/components/input-number/
+/// import declarations for `InputNumber` and its nested components.
+/// For more information, refer to the [official documentation](https://ant.design/components/input-number/)
 [<RequireQualifiedAccess>]
 module InputNumber =
-
-    type InputSize = Input.InputSize
-
+    
+    type Value = U2<float,string>
+   
     type InputNumberProps  =
+        /// get focus when component mounted
         | AutoFocus of bool
+        /// initial value	
         | DefaultValue of float
-        | Formatter of (float -> string)
+        /// disable the input	
+        | Disabled of bool
+        /// Specifies the format of the value presented
+        | Formatter of (Value -> string)
+        /// max value
         | Max of float
+        /// min value	
         | Min of float
+        /// Specifies the value extracted from formatter
         | Parser of (string -> float)
+        /// precision of input value
         | Precision of float
-        | Size of InputSize
-        | Step of U2<float,string>
+        /// width of input box
+        | Size of Common.Size
+        /// The number to which the current value is increased or decreased. 
+        /// It can be an integer or decimal.
+        | Step of Value
+        /// current value
         | Value of float
-        | OnChange of (U2<float,string> -> unit)
+        /// The callback triggered when the value is changed.
+        | OnChange of (Value -> unit)
         interface Fable.Helpers.React.Props.IProp
 
      let inline inputNumber (props: IProp list) (children: React.ReactElement list): React.ReactElement =

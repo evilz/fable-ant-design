@@ -3,6 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common.fs" />
     <Compile Include="Affix.fs" />
     <Compile Include="Alert.fs" />
     <Compile Include="Anchor.fs" />
@@ -32,7 +33,14 @@
     <Compile Include="Popover.fs" />
     <Compile Include="Input.fs" />
     <Compile Include="InputNumber.fs" />
-    <Content Include="*.fsproj; **/*.fs" />
+    <Compile Include="Select.fs" />
+    <Compile Include="Form.fs" />
   </ItemGroup>
+
+  <!-- Add source files to "fable" folder in Nuget package -->
+  <ItemGroup>
+    <Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
+  </ItemGroup>
+
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

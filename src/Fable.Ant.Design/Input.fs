@@ -9,9 +9,6 @@ open Fable.Helpers.React.Props
 [<RequireQualifiedAccess>]
 module Input =
 
-    [<StringEnum>]
-    type InputSize = Large | Default | Small
-
     type AbstractInputProps =
         | PrefixCls of string
         //className?: string
@@ -26,7 +23,7 @@ module Input =
         | Type of string
         | Id of U2<int, string>
         | Name of string
-        | Size of InputSize
+        | Size of Common.Size
         | MaxLength of int //?: number | string
         | Disabled of bool
         | ReadOnly of bool
@@ -52,7 +49,7 @@ module Input =
 
     type GroupProps =
         //className?: string;
-        | Size of InputSize
+        | Size of Common.Size
         //children?: any;
         //style?: React.CSSProperties;
         | PrefixCls of string
