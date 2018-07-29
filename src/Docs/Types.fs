@@ -15,6 +15,7 @@ type Msg =
   | PaginationMsg of Navigation.Pagination.Types.Msg
   | StepsMsg of Navigation.Steps.Types.Msg
   | AutoCompleteMsg of DataEntry.AutoComplete.Types.Msg
+  | CascaderMsg of DataEntry.Cascader.Types.Msg
   | SiderMsg of bool
 
 type Model = {
@@ -31,6 +32,6 @@ type Model = {
     menu: Navigation.Menu.Types.Model
     pagination: Navigation.Pagination.Types.Model
     steps: Navigation.Steps.Types.Model
-
+    cascader: DataEntry.Cascader.Types.State
     autoComplete: DataEntry.AutoComplete.Types.Model
   }
