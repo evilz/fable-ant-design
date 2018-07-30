@@ -87,6 +87,9 @@ let root model dispatch =
                div [] [h3 [] [str "4"]]
              ]
           ]
+
+
+          Cascader.cascader [] []
       ]
     ]
   ]
