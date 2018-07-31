@@ -11,7 +11,7 @@ open Fable.Helpers.React.Props
 module Cascader = 
     
     /// Specifies the size of the cascader element
-    type CascaderSize = Small | Large
+    type [<StringEnum>] CascaderSize = Small | Large
 
     /// Defines a single option for the user to choose from the cascader
     type CascaderValue = {
@@ -21,13 +21,10 @@ module Cascader =
     }
 
     /// expand current item when click or hover
-    type ExpandTrigger = Click | Hover 
+    type [<StringEnum>] ExpandTrigger = Click | Hover 
 
     /// Defines the size the of cascader
-    let Size (size: CascaderSize) = 
-        match size with 
-        | Small -> unbox<IProp> ("size", "small")
-        | Large -> unbox<IProp> ("size", "large") 
+    let Size (size: CascaderSize) = unbox<IProp> ("size", size)
     
     /// Converts the cascader value into the object the cascader element expects
     let rec internal makeOption (value: CascaderValue) = 
@@ -43,19 +40,16 @@ module Cascader =
         option
 
     /// Choose what triggers the submenu's to expand, whether it is a mouse click or hover
-    let ExpandOn (trigger: ExpandTrigger) = 
-        match trigger with 
-        | Click -> unbox<IProp> ("expandTrigger", "click")
-        | Hover -> unbox<IProp> ("expandTrigger", "hover")
+    let ExpandOn (trigger: ExpandTrigger) = unbox<IProp> ("expandTrigger", trigger)
 
     /// Choose what value to render on the cascader element
     let DisplayRender (render: string list -> string) = 
         let innerRender = List.ofArray >> render 
         unbox<IProp> ("displayRender", innerRender)
 
-    /// Whether the cascader is disabled	
-    let Disabled (value: bool) = 
-        unbox<IProp> ("disabled", value)
+    /// Whether the cascader element is disabled	
+    let Disabled (value: bool) = unbox<IProp> ("disabled", value)
+       
 
     /// The options to select from
     let Options (options : CascaderValue list) = 
