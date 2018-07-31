@@ -92,11 +92,13 @@
     <Compile Include="DataEntry/AutoComplete/_AutoCompleteNonCaseSensitive.fs" />
     <Compile Include="DataEntry/AutoComplete/_AutoCompleteLookupPatternsCertainCategory.fs" />
     <Compile Include="DataEntry/AutoComplete/AutoComplete.fs" />
+    <Compile Include="DataEntry/Cascader/Basic.fs" />
+    <Compile Include="DataEntry/Cascader/Cascader.fs" />
     <Compile Include="Navbar/View.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
-    <Compile Include="App.fs" />
-  </ItemGroup>
+    <Compile Include="App.fs" /> 
+  </ItemGroup> 
     <ItemGroup>
     <DotNetCliToolReference Include="dotnet-fable" Version="1.3.14" />
   </ItemGroup>

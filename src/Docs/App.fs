@@ -102,6 +102,7 @@ let root model dispatch =
     | Page.Pagination -> Navigation.Pagination.View.root model.pagination (PaginationMsg >> dispatch)
     | Page.Steps -> Navigation.Steps.View.root model.steps (StepsMsg >> dispatch)
     | Page.AutoComplete -> DataEntry.AutoComplete.View.root model.autoComplete (AutoCompleteMsg >> dispatch)
+    | Page.Cascader -> DataEntry.Cascader.View.render model.cascader (CascaderMsg >> dispatch)
     | _ -> div [] [ str "404 !!!"]
 
   div [] [ 

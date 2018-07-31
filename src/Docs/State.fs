@@ -20,10 +20,8 @@ let pageParser: Parser<Page->Page,Page> =
     map Menu (s "navigation" </> s "menu")
     map Pagination (s "navigation" </> s "pagination")
     map Steps (s "navigation" </> s "steps")
-
+    map Cascader (s "dataentry" </> s "cascader")
     map AutoComplete (s "dataentry" </> s "autocomplete")
-
-
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -51,50 +49,51 @@ let init result =
         menu = Navigation.Menu.State.init() |> fst
         pagination = Navigation.Pagination.State.init() |> fst
         steps = Navigation.Steps.State.init() |> fst
-
+        cascader = DataEntry.Cascader.State.init() |> fst
         autoComplete = DataEntry.AutoComplete.State.init() |> fst
       }
   model, cmd
 
 let update msg model =
-  match msg with
-  | HomeMsg msg ->
-      let (home, homeCmd) = Home.State.update msg model.home
-      { model with home = home }, Cmd.map HomeMsg homeCmd
-  | SiderMsg collapsed ->
-      { model with menuCollapsed = collapsed }, Cmd.Empty
-  | ButtonMsg msg -> 
-      let (button, buttonCmd) = General.Button.State.update msg model.button
-      { model with button = button }, Cmd.map ButtonMsg buttonCmd
-  | IconsMsg msg -> 
-      let (icon, iconCmd) = General.Icons.State.update msg model.icons
-      { model with icons = icon }, Cmd.map IconsMsg iconCmd
-  | GridMsg msg -> 
-      let (grid, gridCmd) = Layout.Grid.State.update msg model.grid
-      { model with grid = grid }, Cmd.map GridMsg gridCmd
-  | LayoutMsg msg -> 
-      let (layout, layoutCmd) = Layout.Layout.State.update msg model.layout
-      { model with layout = layout }, Cmd.map LayoutMsg layoutCmd
-  | AffixMsg msg -> 
-      let (affix, affixCmd) = Navigation.Affix.State.update msg model.affix
-      { model with affix = affix }, Cmd.map AffixMsg affixCmd
-  | BreadcrumbMsg msg -> 
-      let (breadcrumb, breadcrumbCmd) = Navigation.Breadcrumb.State.update msg model.breadcrumb
-      { model with breadcrumb = breadcrumb }, Cmd.map BreadcrumbMsg breadcrumbCmd
-  | DropdownMsg msg -> 
-      let (dropdown, dropdownCmd) = Navigation.Dropdown.State.update msg model.dropdown
-      { model with dropdown = dropdown }, Cmd.map DropdownMsg dropdownCmd
-  | MenuMsg msg -> 
-      let (menu, menuCmd) = Navigation.Menu.State.update msg model.menu
-      { model with menu = menu }, Cmd.map MenuMsg menuCmd
-  | PaginationMsg msg -> 
-      let (pagination, paginationCmd) = Navigation.Pagination.State.update msg model.pagination
-      { model with pagination = pagination }, Cmd.map PaginationMsg paginationCmd
-  | StepsMsg msg -> 
-      let (steps, stepsCmd) = Navigation.Steps.State.update msg model.steps
-      { model with steps = steps }, Cmd.map StepsMsg stepsCmd
-  | AutoCompleteMsg msg -> 
-      let (autoComplete, autoCompleteCmd) = DataEntry.AutoComplete.State.update msg model.autoComplete
-      { model with autoComplete = autoComplete }, Cmd.map AutoCompleteMsg autoCompleteCmd
-
-
+    match msg with
+    | HomeMsg msg ->
+        let (home, homeCmd) = Home.State.update msg model.home
+        { model with home = home }, Cmd.map HomeMsg homeCmd
+    | SiderMsg collapsed ->
+        { model with menuCollapsed = collapsed }, Cmd.Empty
+    | ButtonMsg msg -> 
+        let (button, buttonCmd) = General.Button.State.update msg model.button
+        { model with button = button }, Cmd.map ButtonMsg buttonCmd
+    | IconsMsg msg -> 
+        let (icon, iconCmd) = General.Icons.State.update msg model.icons
+        { model with icons = icon }, Cmd.map IconsMsg iconCmd
+    | GridMsg msg -> 
+        let (grid, gridCmd) = Layout.Grid.State.update msg model.grid
+        { model with grid = grid }, Cmd.map GridMsg gridCmd
+    | LayoutMsg msg -> 
+        let (layout, layoutCmd) = Layout.Layout.State.update msg model.layout
+        { model with layout = layout }, Cmd.map LayoutMsg layoutCmd
+    | AffixMsg msg -> 
+        let (affix, affixCmd) = Navigation.Affix.State.update msg model.affix
+        { model with affix = affix }, Cmd.map AffixMsg affixCmd
+    | BreadcrumbMsg msg -> 
+        let (breadcrumb, breadcrumbCmd) = Navigation.Breadcrumb.State.update msg model.breadcrumb
+        { model with breadcrumb = breadcrumb }, Cmd.map BreadcrumbMsg breadcrumbCmd
+    | DropdownMsg msg -> 
+        let (dropdown, dropdownCmd) = Navigation.Dropdown.State.update msg model.dropdown
+        { model with dropdown = dropdown }, Cmd.map DropdownMsg dropdownCmd
+    | MenuMsg msg -> 
+        let (menu, menuCmd) = Navigation.Menu.State.update msg model.menu
+        { model with menu = menu }, Cmd.map MenuMsg menuCmd
+    | PaginationMsg msg -> 
+        let (pagination, paginationCmd) = Navigation.Pagination.State.update msg model.pagination
+        { model with pagination = pagination }, Cmd.map PaginationMsg paginationCmd
+    | StepsMsg msg -> 
+        let (steps, stepsCmd) = Navigation.Steps.State.update msg model.steps
+        { model with steps = steps }, Cmd.map StepsMsg stepsCmd
+    | AutoCompleteMsg msg -> 
+        let (autoComplete, autoCompleteCmd) = DataEntry.AutoComplete.State.update msg model.autoComplete
+        { model with autoComplete = autoComplete }, Cmd.map AutoCompleteMsg autoCompleteCmd
+    | CascaderMsg msg ->
+        let (cascader, cascaderCmd) = DataEntry.Cascader.State.update msg model.cascader
+        { model with cascader = cascader }, Cmd.map CascaderMsg cascaderCmd
