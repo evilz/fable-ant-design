@@ -5,7 +5,7 @@ open Fable.Helpers.React.Props
 open Fable.Import.Browser
 open Fable.AntD
 
-let onSelect (value:AutoComplete.SelectValue) _ =
+let onSelect (value:string) =
     console.log("onSelect",value)
 
 let view () = 
@@ -35,9 +35,9 @@ let dataSource =
               { title= "AntDesign 是啥"; count= 30010 }
             |] }
         { title= "文章"; 
-          children= [|
-                { title= "AntDesign 是一个设计语言"; count= 100000}
-            |]
+          children = [| { title= "AntDesign 是一个设计语言"; count= 100000} |]
+                
+            
         }
     |]
 
