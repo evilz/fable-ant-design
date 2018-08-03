@@ -44,6 +44,8 @@ type AutoComplete() =
     
     /// Defines whether the autocomplete input is disabled or not.
     static member Disabled(enable: bool) = unbox<IProp> ("disabled", enable)
+    /// Triggers when the user is typing in the auto-complete input box
+    static member OnSearch(f: string -> unit) = unbox<IProp> ("onSearch", f)
     
     /// Event fires when a value is selected from the suggestions
     static member OnSelect(f: string -> unit) : IProp = 
