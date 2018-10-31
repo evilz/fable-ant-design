@@ -51,14 +51,13 @@ module View =
         let options : Cascader.CascaderValue list = 
           [ { Value = "fruit"
               Label = "Fruit"
-              Children = [ 
-                { Value = "apples"
-                  Label = "Apples"
-                  Children = [] }
-                { Value = "bananas"
-                  Label = "Bananas"
-                  Children = [] }
-              ] } ]
+              Children = 
+               [ { Value = "apples"
+                   Label = "Apples"
+                   Children = [] }
+                 { Value = "bananas"
+                   Label = "Bananas"
+                   Children = [] } ] } ]
 
         let basicCascader = 
             div [ Style [ Padding 20 ] ] [ 

@@ -12,9 +12,10 @@ let onSelect (value:AutoComplete.SelectValue) _ =
 let handleKeyPress (ev:KeyboardEvent) =
     console.log("handleKeyPress", ev)
 
-let view datasource onSearch () = 
+
+let view onSearch () = 
     AutoComplete.autoComplete [
-        AutoComplete.DataSource datasource
+        AutoComplete.DataSource("Burns Bay Road", "Downing Street", "Wall Street")
         Style [ Width  200 ]
         AutoComplete.OnSelect onSelect
         AutoComplete.OnSearch onSearch
@@ -24,5 +25,4 @@ let view datasource onSearch () =
           ClassName "custom"
           Style [Height 50 ]
           OnKeyPress handleKeyPress] []
-          
     ]

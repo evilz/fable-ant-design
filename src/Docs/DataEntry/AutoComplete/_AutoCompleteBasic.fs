@@ -1,17 +1,48 @@
 module DataEntry.AutoComplete.AutoCompleteBasic
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Import.Browser
+
 open Fable.AntD
+open Fable.Helpers.React.Props
+open Elmish
 
-let onSelect (value:AutoComplete.SelectValue) _ =
-    console.log("onSelect",value)
+type State = {
+    TextInput: string
+    Suggested: string list  
+    Selected : string option
+}
 
-let view datasource onSearch () = 
+type Msg = 
+    | UpdateInput of string
+    | Selected of string 
+
+let init() = 
+    { TextInput = ""
+      Suggested = [ ]
+      Selected = None }, Cmd.none
+
+let update msg state = 
+    match msg with 
+    | UpdateInput input -> 
+        let concat = String.concat ""
+        let suggested = 
+          match input with
+          | "" -> [ ]
+          | _  -> [ input; 
+                    concat [input; input]
+                    concat [input; input; input] ] 
+        
+        { state with 
+            TextInput = input;
+            Suggested = suggested  }, Cmd.none
+
+    | Selected value -> 
+        { state with Selected = Some value }, Cmd.none
+
+let view state (dispatch: Msg -> unit) = 
     AutoComplete.autoComplete [
-        AutoComplete.DataSource datasource
+        AutoComplete.DataSource state.Suggested
         Style [ Width  200 ]
-        AutoComplete.OnSelect onSelect
-        AutoComplete.OnSearch onSearch
+        DefaultValue state.TextInput
+        AutoComplete.OnSelect (Selected >> dispatch)
+        AutoComplete.OnSearch (UpdateInput >> dispatch)
         Placeholder "input here"
     ] []

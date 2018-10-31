@@ -3,13 +3,21 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Import.Browser
 open Fable.AntD
+open Fable.AntD
+open Fable.AntD
 
 let onSelect (value:AutoComplete.SelectValue) _ =
     console.log("onSelect",value)
 
-let view datasource onSearch () = 
+let dataSource = [
+    AutoComplete.DataSourceItem("Burns Bay Road")
+    AutoComplete.DataSourceItem("Downing Street") 
+    AutoComplete.DataSourceItem("Wall Street")
+]
+
+let view onSearch () = 
     AutoComplete.autoComplete [
-        AutoComplete.DataSource datasource
+        AutoComplete.DataSource dataSource
         Style [ Width  200 ]
         AutoComplete.OnSelect onSelect
         AutoComplete.OnSearch onSearch
